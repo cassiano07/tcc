@@ -1,0 +1,133 @@
+/*  BANNER*/ 
+
+.banner {
+	width: 100%;
+	height: 250px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background: white;
+	align-items: center;
+	background: rgb(0, 0, 0) transparent;
+}
+
+.banner a{
+	width: 200px;
+	height: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-shadow:  5px 5px 10px 0px rgba(44, 44, 44, 0.15);
+}
+
+.caixa2 {
+	width: 200px;
+	height: 200px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	box-shadow:  5px 5px 10px 0px rgba(44, 44, 44, 0.15);
+}
+
+.banner a:hover{
+	background: #e7e7e7;
+}
+
+.seta-1 { 
+	width: 50px;
+	height: 50px;
+	border-left: 30px solid #6b60a1; 
+	border-top: 30px solid transparent;  
+	border-bottom: 30px solid transparent; 
+	float: left;
+}
+
+.caixa img {
+    width: 100%;
+}
+
+.caixa .passos{
+	max-width:150px;
+    max-height:150px;
+
+}
+
+/* DESCRIÇÃO DO SITE*/
+
+.texto{
+	width: 100%;
+	height: 500px;
+	background-color: #0d242a;
+}
+
+.texto p {
+	text-align: center;
+	font-family: montserrat;
+	color: white;
+}
+
+
+/* LAYOUT DE PROCESSAMENTO*/
+
+.processa
+{
+	width: 100%;
+	height: 500px;
+	background-color: white;
+}
+
+.processa p{
+	color: red;
+}
+
+
+/* LAYOUT DOS GRAFICOS*/
+
+.fundo_grafico{
+	width: 100%;
+	height: 500px;
+	background-color: #0d242a;
+}
+
+.subtitulo{
+	width: 100%;
+	height: 50px;
+	background-color: #C0C0C0;
+}
+.subtitulo p {
+	text-align: center;
+	font-size:18px;
+	line-height:50px;
+
+}
+
+canvas{
+	max-width: 100%;
+	display: block;
+}
+
+
+
+
+.flex{
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 1600px; /*Aumentar para cabe mais graficos na tela*/
+	margin: 0 auto;
+
+}
+
+.flex > div {
+	flex: 1 1 400px; /*Após aumentar a flex, determinamos o tamanho dos graficos*/
+	margin: 20px;
+	box-shadow:  0px 5px 10px 0px rgba(0, 0, 0, 0.90);
+	transition: .20s ease-out;
+	background-color: #18333a;
+}
+
+.flex > div:hover {
+	background: #e7e7e7;
+}
+

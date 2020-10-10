@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" href="./telas/css/style_index.css">
+    <link rel= "stylesheet" href="./telas/css/body.css">
+    <link rel= "stylesheet" href="./telas/css/menu.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  </head>
+  <body>
+    <script>
+    if ( window.history.replaceState ) {
+        window.history.replaceState( null, null, window.location.href );
+    }
+</script>
+
+
+      <!-- MENU -->
+      	<nav>
+
+      		<input type="checkbox" id="check">
+      		<label for="check" class="checkbtn">
+      		<i class="fas fa-bars"></i>
+      		</label>
+
+      		<label class="logo"><img src="./telas/img/logo.png"  width="100" height="80"></label>
+      		<ul>
+       			<li><a class="active" href="#">HOME</a></li>
+       			<li><a href="#">SOBRE NÓS</a></li>
+       			<li><a href="#">ANALISE</a></li>
+       			<li><a href="./telas/login.html">LOGIN</a></li>
+       		</ul>
+      	</nav>
+
+    <!-- ZONA DE BANNER -->
+     
+      <div class="banner">
+
+          <a href="#extraction">
+            <div class="caixa">
+              <img class="passos" src="./telas/img/extrac.png">
+            </div>
+          </a>
+
+          <div class="caixa2">
+            <div class="seta-1"></div>
+          </div>
+
+          <a href="#load">
+            <div class="caixa">
+              <img class="passos"  src="./telas/img/load.png">
+            </div>
+          </a>
+
+          <div class="caixa2">
+            <div class="seta-1" align="center"></div>
+          </div>
+          <a href="#visualization">
+            <div class="caixa">
+              <img src="./telas/img/visualization.png">
+            </div>
+          </a>
+    </div>
+
+    <!-- ZONA DE ENVIO DE ARQUIVO-->
+
+    <div class="texto" id="extraction">
+        <p>CRIAR FORMULARIO PARA ENVIAR ARQUIVO</p>
+
+        <div class="Formulario">
+
+        </div>
+    </div>
+
+    <!-- ZONA DE PROCESSAMENTO-->
+    <div class="processa" id="load"> 
+      <p>Explicando sobre o processamento</p>
+    </div>
+
+    <!-- BODY - GRAFICOS -->
+      <div class="fundo_grafico" id="visualization">
+      	<section class="flex">
+      		<div class="color">
+      			<canvas id="myChartLine"></canvas>
+      			<script type="text/javascript" src="./telas/javascript/graficos.js"></script>
+      		</div>
+      		<div>
+      			<canvas id="myChartBarra"></canvas>
+            <script type="text/javascript" src="./telas/javascript/graficos.js"></script>
+      		</div>
+      	</section>
+      </div>
+
+
+  </body>
+</html>
