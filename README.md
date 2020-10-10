@@ -1,2 +1,2 @@
 # tcc
-Projeto final da disciplina Analise e Desenvolvimento de Sistema
+Projeto final da graduação Analise e Desenvolvimento de Sistema
