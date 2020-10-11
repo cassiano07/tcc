@@ -185,3 +185,11 @@ form .btn input[type="submit"]{
   font-weight: 500;
   cursor: pointer;
 }
+
+
+@media screen and (max-width: 600px) {
+  .wrapper{
+    margin-top: 20px;
+  }
+}
+

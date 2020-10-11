@@ -1,0 +1,61 @@
+
+/* Fazer o formulario centralizar na div*/
+form 
+{
+	text-align:center;
+ 	width: 400px;
+ 	height: 100px;
+  	margin: 0 auto;
+  	align-items: middle;
+}
+
+input 
+{
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	border-radius: 5px;
+	font-size: 17px;
+	outline: none;
+	border-bottom-width: 2px;
+	margin-top: 10px;
+	border: 0;
+	cursor: pointer;
+}
+
+#getFile
+{
+	color: #c6c6c6;
+	width: 400px;
+	height: 26px;
+	cursor: pointer;
+
+}
+
+.submit{
+	background-color: blue;
+	background: #007bff;
+	color: black;
+	width: 100px;
+	height: 26px;
+	cursor: pointer;
+}
+
+.submit:hover{
+	background-color: blue;
+	background: #0069d9;
+	color: black;
+
+}
+
+@media screen and (max-width: 600px) {
+	form 
+	{
+	 	width: 300px;
+	}
+	  #getFile
+	{
+		width: 300px;
+	}
+}
+

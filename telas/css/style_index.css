@@ -54,6 +54,39 @@
 
 }
 
+/*deixa responsivo*/
+@media screen and (max-width: 1000px) {
+	.banner a{
+		width: 150px;
+		height: 150px;
+	}
+
+	.caixa2 {
+		width: 150px;
+		height: 150px;
+	}
+
+	.banner {
+		height: 200px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	.banner a{
+		width: 100px;
+		height: 100px;
+	}
+
+	.caixa2 {
+		width: 100px;
+		height: 100px;
+	}
+
+	.banner {
+		height: 150px;
+	}
+}
+
 /* DESCRIÇÃO DO SITE*/
 
 .texto{

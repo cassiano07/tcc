@@ -8,9 +8,11 @@
     <link rel= "stylesheet" href="./telas/css/style_index.css">
     <link rel= "stylesheet" href="./telas/css/body.css">
     <link rel= "stylesheet" href="./telas/css/menu.css">
+    <link rel= "stylesheet" href="./telas/css/formulario_arquivo.css">
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   </head>
   <body>
@@ -73,8 +75,11 @@
     <div class="texto" id="extraction">
         <p>CRIAR FORMULARIO PARA ENVIAR ARQUIVO</p>
 
-        <div class="Formulario">
-
+        <div id="formulario">
+          <form action ='#' class="arquivo">
+            <input type='file' id="getFile" class="buttons" accept=".csv,.xls,.xlsx" required="required">
+            <input type="submit" id="campo" class="submit" value="Carregar" >   
+          </form>
         </div>
     </div>
 
