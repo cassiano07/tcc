@@ -40,6 +40,3 @@ var ctx1 = document.getElementById('myChartBarra').getContext('2d');
 		    // Configuration options go here
 		    options: {}
 		});
-
-
-

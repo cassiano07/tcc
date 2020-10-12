@@ -5,7 +5,10 @@
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="./css/dashbord.css">
   <link rel="stylesheet" type="text/css" href="./css/menu.css">
+  <link rel="stylesheet" type="text/css" href="./css/graficos.css">
   <link rel="stylesheet" type="text/css" href="./css/style_dashbord.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- MENU -->
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>  <!-- MENU -->
 
@@ -56,8 +59,32 @@
       </div>
     </div>
 
-    <div id="graficos">
-    </div>
-  </div>
+      <!-- BODY - GRAFICOS -->
+        <section class="flex">
+          <div class="color">
+            <canvas id="myChartLine"></canvas>
+            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
+          </div>
+          <div>
+            <canvas id="myChartBarra"></canvas>
+            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
+          </div>
+          <div>
+            <canvas id="myChartRadar"></canvas>
+            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
+          </div>
+          <div>
+            <canvas id="myChartPie"></canvas>
+            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
+          </div>
+          <div>
+            <canvas id="myChartPolarArea"></canvas>
+            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
+          </div>
+          <div>
+            <canvas id="myChartLine2"></canvas>
+            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
+          </div>
+
 </body>
 </html>
