@@ -14,7 +14,9 @@ body{
   height: 100%;
   width: 100%;
   place-items: center;
-  background: -webkit-linear-gradient(left, #138AF2, #829FD9);
+  background: #0e0e0e url("../img/fundo_login.png") no-repeat right top;
+  background-position: 50% 0%;
+  background-size: 1000px 1000px;
 }
 ::selection{
   background: #5A13F2;
