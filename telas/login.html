@@ -41,13 +41,13 @@
           <div class="slider-tab">
         </div>
       </div>
-      <div class="form-inner">
-        <form action="#" class="login">
+      <div class="form-inner"> 
+        <form action="./php/login.php" method="post" class="login"> <!-- LOGIN form -->
           <div class="field">
-            <input type="text" placeholder="Endereço de e-mail" required>
+            <input type="text" name="usuario" placeholder="Endereço de e-mail" required>
           </div>
           <div class="field">
-            <input type="password" placeholder="Senha" required>
+            <input type="password" name="senha" placeholder="Senha" required>
           </div>
           <div class="pass-link">
             <a href="#">Esqueceu a senha?</a>
@@ -60,15 +60,15 @@
           <div class="signup-link">Não é um membro? <a href="">Inscreva-se agora</a></div>
         </form>
 
-        <form action="#" class="signup">
+        <form action="./php/cadastro.php" method="post" class="signup"> <!-- cadastro form-->
           <div class="field">
-            <input type="text" placeholder="Endereço de e-mail" required>
+            <input type="text" name="email" placeholder="Endereço de e-mail" required>
           </div>
           <div class="field">
-            <input type="password" placeholder="Senha" required>
+            <input type="password" name="senha" placeholder="Senha" required>
           </div>
           <div class="field">
-            <input type="password" placeholder="Confirme a Senha" required>
+            <input type="password" name="senhaConfirma" placeholder="Confirme a Senha" required>
           </div>
           <div class="field btn">
               <div class="btn-layer">
