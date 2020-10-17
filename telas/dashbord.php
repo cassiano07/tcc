@@ -1,3 +1,8 @@
+<?php 
+
+include('./php/verificar_login.php');
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -23,10 +28,10 @@
 
     <label class="logo"><img src="./img/logo.png"  width="100" height="80"></label>
     <ul>
-      <li><a href="../index.html">HOME</a></li>
-      <li><a href="#">SOBRE NÓS</a></li>
-      <li><a href="#">ANALISE</a></li>
-      <li><a class="active" href="#">LOGIN</a></li>
+      <li><a class="active" href="#"><?php echo $_SESSION['usuario'];?></a></li>
+      <li><a href="#">FAVORITOS</a></li>
+      <li><a href="#">DOWNLOAD</a></li>
+      <li><a href="./php/logout.php">LOGOUT</a></li>
     </ul>
   </nav>
 

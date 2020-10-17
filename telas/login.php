@@ -1,3 +1,7 @@
+<?php
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -7,6 +11,7 @@
     <link rel= "stylesheet" href="./css/login.css">  <!-- LOGIN -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- MENU -->
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>  <!-- MENU -->
+
   </head>
   <body>
     <!-- MENU -->
@@ -27,7 +32,6 @@
 
     <!-- LOGIN -->
   <div class="wrapper">
-
       <div class="title-text">
         <div class="title login">Conta</div>
         <div class="title signup">Cadastro</div>
@@ -41,6 +45,7 @@
           <div class="slider-tab">
         </div>
       </div>
+
       <div class="form-inner"> 
         <form action="./php/login.php" method="post" class="login"> <!-- LOGIN form -->
           <div class="field">
@@ -49,6 +54,18 @@
           <div class="field">
             <input type="password" name="senha" placeholder="Senha" required>
           </div>
+          <?php
+            if(isset($_SESSION['nao_autenticado'])):
+          ?>
+          <p align="center" color="red">
+            <font color="red">
+            Senha ou Email incorreto!
+            </font>
+          </p>
+          <?php
+          endif;
+          unset($_SESSION['nao_autenticado']);
+          ?>
           <div class="pass-link">
             <a href="#">Esqueceu a senha?</a>
           </div>
@@ -98,9 +115,5 @@
         return false;
       });
     </script>
-
-  </body>
-
-
   </body>
 </html>

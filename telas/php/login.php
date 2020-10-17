@@ -2,21 +2,21 @@
 session_start();
 
 include ('conexao.php');
-$usuario = filter_input(INPUT_POST, 'usuario');
+$email = filter_input(INPUT_POST, 'usuario');
 $senha = mysqli_real_escape_string($connect, $_POST['senha']);
 
-$querry = "select usuario from usuario where usuario = '{$usuario}' and senha = '{$senha}'";
+$query = "select * from usuarios where email = '{$email}' and senha = '{$senha}'";
 
-$result =mysqli_query($connect, $querry);
+$result =mysqli_query($connect, $query);
 $rows = mysqli_num_rows($result);
 
 
 if($rows == 1) {
-	$_SESSION['usuario'] = $usuario;
-	header('Location: ../dashbord.html');
+	echo $_SESSION['usuario'] = $email;
+	header('Location: ../dashbord.php');
 	exit();
 } else {
 	$_SESSION['nao_autenticado'] = true;
-	header('Location: ../login.html');
+	header('Location: ../login.php');
 	exit();
 }

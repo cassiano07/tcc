@@ -18,10 +18,7 @@ body{
   background-position: 50% 0%;
   background-size: 1000px 1000px;
 }
-::selection{
-  background: #5A13F2;
-  color: #fff;
-}
+
 .wrapper{
   margin-top: 200px;
   overflow: hidden;
@@ -194,4 +191,5 @@ form .btn input[type="submit"]{
     margin-top: 20px;
   }
 }
+
 
