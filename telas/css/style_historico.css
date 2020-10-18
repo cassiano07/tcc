@@ -1,0 +1,43 @@
+*{
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style:none;
+	box-sizing: border-box;
+}
+
+
+body{
+	font-family: 'Poppins', sans-serif;
+	background-color: #0e0e0e;
+}
+
+.comBordaSimples
+{
+	border-collapse: collapse;
+    border-spacing: 2px;
+    border-color: grey;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    background-color: #212529;
+    margin-top: 20px;
+}
+
+.comBordaSimples tr
+{
+	border: 1px solid #c6c8ca;;
+}
+
+.comBordaSimples td
+{
+	border: 1px solid #c6c8ca;
+	height: 30px;
+}
+
+.comBordaSimples th
+{
+	border: 1px solid #c6c8ca;
+	height: 30px;
+}
+

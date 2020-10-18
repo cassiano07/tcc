@@ -18,7 +18,7 @@ include('./php/verificar_login.php');
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>  <!-- MENU -->
 
 </head>
-<body><div id="corpo">
+<body>
   <!-- MENU -->
   <nav>
     <input type="checkbox" id="check">
@@ -28,9 +28,9 @@ include('./php/verificar_login.php');
 
     <label class="logo"><img src="./img/logo.png"  width="100" height="80"></label>
     <ul>
-      <li><a class="active" href="#"><?php echo $_SESSION['usuario'];?></a></li>
+      <li><a class="active" href="#"><?php $usuario = explode("@",$_SESSION['usuario']); echo $usuario[0];?></a></li>
       <li><a href="#">FAVORITOS</a></li>
-      <li><a href="#">DOWNLOAD</a></li>
+      <li><a href="./historico.php">HISTÓRICO</a></li>
       <li><a href="./php/logout.php">LOGOUT</a></li>
     </ul>
   </nav>
