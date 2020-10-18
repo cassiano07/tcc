@@ -79,6 +79,12 @@
 
         <form action="./php/cadastro.php" method="post" class="signup"> <!-- cadastro form-->
           <div class="field">
+            <input type="text" name="nome" placeholder="Nome Completo" required>
+          </div>
+          <div class="field">
+            <input type="text" name="telefone" placeholder="Número de telefone" required>
+          </div>
+          <div class="field">
             <input type="text" name="email" placeholder="Endereço de e-mail" required>
           </div>
           <div class="field">
