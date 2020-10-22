@@ -67,7 +67,6 @@ $dimensoes = colunas($rows['dados'], 'dimensao');
               {
                 echo "<option> $dimensao </option>";
               }
-
               ?>
             </select>
             <select class="space" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
@@ -78,11 +77,6 @@ $dimensoes = colunas($rows['dados'], 'dimensao');
               }
 
               ?>
-              <option>aqui coluna de numero</option>
-              <option>aqui coluna de numero 2</option>
-              <option>aqui coluna de numero 3</option>
-              <option>aqui coluna de numero 4</option>
-              <option>aqui coluna de numero 5</option>
             </select>
           <input type="submit" name="gerar" value="Gerar" class="space">
         </form>
