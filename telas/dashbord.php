@@ -1,6 +1,7 @@
 <?php 
 
 include('./php/verificar_login.php');
+include('./php/dashboard.php');
 
 ?>
 <!DOCTYPE html>

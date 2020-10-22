@@ -76,8 +76,10 @@
         <p>CRIAR FORMULARIO PARA ENVIAR ARQUIVO</p>
 
         <div id="formulario">
-          <form action ='#' class="arquivo">
-            <input type='file' id="getFile" class="buttons" accept=".csv,.xls,.xlsx" required="required">
+          <form action="./telas/php/arquivo.php"  enctype="multipart/form-data" method="post" class="arquivo">
+
+            <input type='file' id="getFile" name="anexo" class="buttons" accept=".csv,.xls,.xlsx" required="required">
+
             <input type="submit" id="campo" class="submit" value="Carregar" >   
           </form>
         </div>
