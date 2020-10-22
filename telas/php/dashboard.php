@@ -77,26 +77,27 @@ function processamento($colunas, $linhas, $nome_arquivo)
 			
 	}
 
+
+	$contador_colunas = $num_colunas;
+
+
 	for($f = 0; $f < $num_colunas; $f++)
 	{
-		$num_linha = $num_colunas;
-		$num_dados2 =  ($num_linha * 2)-2;
-
-		for($num_linha; $num_linha == $num_dados2; $num_linha++)
+		
+		if($tipo[$f] == $tipo[$contador_colunas])
 		{
-			if($tipo[$f] == $tipo[$num_linha])
+			if($tipo[$f] == 'string')
 			{
-				if($tipo[$f] == 'string')
-				{
-					array_push($colunas_texto,trim(str_replace('"', '', $colunas[$f])));
-					
-				}
-				else
-				{
-					array_push($colunas_numerica,trim(str_replace('"', '', $colunas[$f])));
-				}
+				array_push($colunas_texto,trim(str_replace('"', '', $colunas[$f])));
+				
+			}
+			else
+			{
+				array_push($colunas_numerica,trim(str_replace('"', '', $colunas[$f])));
 			}
 		}
+
+		$contador_colunas++;
 	}
 
 	$dimensao = 'dimensao_'.implode("|",array_unique($colunas_texto));
@@ -112,7 +113,7 @@ function processamento($colunas, $linhas, $nome_arquivo)
 
 	if($result == true)
 	{
-		return 'sucesso';
+		return $tipo;
 	} 
 	else
 	{
