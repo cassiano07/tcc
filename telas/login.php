@@ -49,7 +49,7 @@
       <div class="form-inner"> 
         <form action="./php/login.php" method="post" class="login"> <!-- LOGIN form -->
           <div class="field">
-            <input type="text" name="usuario" placeholder="Endereço de e-mail" required>
+            <input type="text" name="email" placeholder="Endereço de e-mail" required>
           </div>
           <div class="field">
             <input type="password" name="senha" placeholder="Senha" required>

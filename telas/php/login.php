@@ -2,13 +2,18 @@
 session_start();
 
 include ('conexao.php');
-$email = filter_input(INPUT_POST, 'usuario');
+
+$connect = connect();
+
+$email = filter_input(INPUT_POST, 'email');
 $senha = mysqli_real_escape_string($connect, $_POST['senha']);
 
-$query = "select * from usuarios where email = '{$email}' and senha = '{$senha}'";
+$query = "select * from usuarios where email = '{$email}' and senha ='{$senha}'";
 
-$result =mysqli_query($connect, $query);
+$result = mysqli_query($connect, $query);
 $rows = mysqli_num_rows($result);
+
+print_r($rows);
 
 
 if($rows == 1) {
