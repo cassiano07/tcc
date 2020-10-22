@@ -62,7 +62,7 @@ $dimensoes = colunas($rows['dados'], 'dimensao');
         <form action="#" id="formulario">
           <label class="space"><?php $titulo = explode('.',$rows['titulo']); echo $titulo[0]; ?></label> <!-- aqui será adicionado via php o nome do arquivo-->
             <select class="space" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são texto-->
-              <?php 
+              <?php
               foreach ($dimensoes as $dimensao)
               {
                 echo "<option> $dimensao </option>";
@@ -71,7 +71,7 @@ $dimensoes = colunas($rows['dados'], 'dimensao');
               ?>
             </select>
             <select class="space" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
-              <?php 
+              <?php
               foreach ($metricas as $metrica)
               {
                 echo "<option> $metrica </option>";
