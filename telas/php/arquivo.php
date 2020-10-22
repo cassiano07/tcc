@@ -2,6 +2,8 @@
 
 include('./dashboard.php');
 
+session_start();
+
 $anexo = $_FILES['anexo'];
 
 header('Content-Type: text/html; charset=utf-8');
@@ -53,9 +55,20 @@ if(isset($anexo))
 		}
 		
 		$dados_for_database = processamento($colunas, $linhas, $nome_arquivo);
-		
-		var_dump($dados_for_database);
+		if($dados_for_database == true)
+		{
+			if(!$_SESSION['usuario'])
+			{
+				$_SESSION['usuario'] = 'anonimo';
+				header('Location: ../dashbord.php');
+			}	
+		}
+		else
+		{
+			echo $dados_for_database;
+		}
 
+	
 	}
 }
 else

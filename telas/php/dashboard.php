@@ -113,7 +113,7 @@ function processamento($colunas, $linhas, $nome_arquivo)
 
 	if($result == true)
 	{
-		return $tipo;
+		return true;
 	} 
 	else
 	{
