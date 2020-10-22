@@ -2,8 +2,22 @@
 
 include('./php/verificar_login.php');
 include('./php/dashboard.php');
+include('./php/dados.php');
 
 $anonimo = $_SESSION['usuario'];
+$conteudo = $_SESSION['conteudo'];
+
+$conexao =  connect();
+
+$query = "select titulo, dados from conteudo_arquivo  where user_id = '{$conteudo}'";
+
+$result = mysqli_query($conexao, $query);
+$rows = mysqli_fetch_array($result);
+
+$metricas = colunas($rows['dados'], 'metrica');
+
+$dimensoes = colunas($rows['dados'], 'dimensao');
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -46,15 +60,24 @@ $anonimo = $_SESSION['usuario'];
 
       <div id="alinha">
         <form action="#" id="formulario">
-          <label class="space">Name Project</label> <!-- aqui será adicionado via php o nome do arquivo-->
+          <label class="space"><?php $titulo = explode('.',$rows['titulo']); echo $titulo[0]; ?></label> <!-- aqui será adicionado via php o nome do arquivo-->
             <select class="space" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são texto-->
-              <option>aqui coluna de texto</option>
-              <option>aqui coluna de texto 2</option>
-              <option>aqui coluna de texto 3</option>
-              <option>aqui coluna de texto 4</option>
-              <option>aqui coluna de texto 5</option>
+              <?php 
+              foreach ($dimensoes as $dimensao)
+              {
+                echo "<option> $dimensao </option>";
+              }
+
+              ?>
             </select>
             <select class="space" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
+              <?php 
+              foreach ($metricas as $metrica)
+              {
+                echo "<option> $metrica </option>";
+              }
+
+              ?>
               <option>aqui coluna de numero</option>
               <option>aqui coluna de numero 2</option>
               <option>aqui coluna de numero 3</option>

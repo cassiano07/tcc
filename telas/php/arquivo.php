@@ -54,12 +54,16 @@ if(isset($anexo))
 			
 		}
 		
-		$dados_for_database = processamento($colunas, $linhas, $nome_arquivo);
-		if($dados_for_database == true)
+		$usuario_id = processamento($colunas, $linhas, $nome_arquivo);
+
+
+
+		if($usuario_id)
 		{
 			if(!$_SESSION['usuario'])
 			{
 				$_SESSION['usuario'] = 'anonimo';
+				$_SESSION['conteudo'] = $usuario_id;
 				header('Location: ../dashbord.php');
 			}	
 		}
