@@ -80,9 +80,9 @@ function processamento($colunas, $linhas, $nome_arquivo)
 	for($f = 0; $f < $num_colunas; $f++)
 	{
 		$num_linha = $num_colunas;
-		$num_dados2 =  $num_linha * 2;
+		$num_dados2 =  ($num_linha * 2)-2;
 
-		for($num_linha; $num_linha < $num_dados2; $num_linha++)
+		for($num_linha; $num_linha == $num_dados2; $num_linha++)
 		{
 			if($tipo[$f] == $tipo[$num_linha])
 			{

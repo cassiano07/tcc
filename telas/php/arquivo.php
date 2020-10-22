@@ -4,7 +4,7 @@ include('./dashboard.php');
 
 $anexo = $_FILES['anexo'];
 
-
+header('Content-Type: text/html; charset=utf-8');
 
 if(isset($anexo))
 {
@@ -20,17 +20,26 @@ if(isset($anexo))
 		$colunas = explode(',', $colunas);
 		$count_colunas = count($colunas);
 		unset($dados[0]);  // Remove as colunas dos dados.
-		$count_valores = 0;
+		$count_valores = 1;
 		$linhas = [];
 
 		foreach ($dados as $dado)
 		{
+
 			$linha = explode(',', $dado);
+
 			$count_linhas = count($linha);
+
+			for($i = 0; $i < $count_linhas; $i++)
+			{
+				if($linha[$i] == null)
+				{
+					$linha[$i] = 'NaN';
+				}
+			}
 
 			if($count_linhas ==  $count_colunas)
 			{
-				echo 'linha '.$count_valores.' sem erro <br>';
 				array_push($linhas,$linha);
 			}
 			else
@@ -46,6 +55,7 @@ if(isset($anexo))
 		$dados_for_database = processamento($colunas, $linhas, $nome_arquivo);
 		
 		var_dump($dados_for_database);
+
 	}
 }
 else
