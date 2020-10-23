@@ -1,55 +1,66 @@
 CREATE DATABASE EA;
+
+use ea;
+
 CREATE TABLE usuarios(
-		id int(5) AUTO_INCREMENT,
-		nome_completo varchar(100) NOT NULL,
-		email varchar(100) NOT NULL,
-		telefone int(14) NOT NULL,
-    	senha varchar(100) NOT NULL,
-    	categoria_id int(3) NOT NULL,
-    	data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    	data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (id)
-)
+        id int(5) AUTO_INCREMENT,
+        nome_completo varchar(100) NOT NULL,
+        email varchar(100) NOT NULL,
+        telefone int(14) NOT NULL,
+        senha varchar(100) NOT NULL,
+        categoria_id int(3) NOT NULL,
+        data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+        data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE conteudo_arquivo(
-    	id int(3) AUTO_INCREMENT,
-    	titulo varchar(100) NOT NULL,
-    	dados longtext NOT NULL,
-    	usuario_id int(5) NOT NULL,
-    	data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    	data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (id)
-    )
+        id int(3) AUTO_INCREMENT,
+        titulo varchar(100) NOT NULL,
+        dados longtext NOT NULL,
+        usuario_id int(5) NOT NULL,
+        data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+        data_atualizacao DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+    
+
 CREATE TABLE favorito(
-    	id int(3) AUTO_INCREMENT,
-    	conteudo_id int(3) NOT NULL,
-    	grafico_id int(3) NOT NULL,
-		usuario_id int(5) NOT NULL,
-    	data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-	PRIMARY KEY (id)
-    )
+        id int(3) AUTO_INCREMENT,
+        conteudo_id int(3) NOT NULL,
+        grafico_id int(3) NOT NULL,
+        usuario_id int(5) NOT NULL,
+        data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id)
+);
+   
 CREATE TABLE historico(
-		id int(3) AUTO_INCREMENT,
-		grafico_id int(3) NOT NULL,
-		conteudo_id int(3) NOT NULL,
-		data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-		usuario_id int(3) NOT NULL,
-		favorito_id int(3);
-		PRIMARY KEY (id)
-    )
+        id int(3) AUTO_INCREMENT,
+        grafico_id int(3),
+        conteudo_id int(3),
+        evento varchar(100) NOT null,
+        data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+        usuario_id int(3),
+        favorito_id int(3),
+        PRIMARY KEY (id)
+);
+   
 CREATE TABLE grafico(
-		id int(3) AUTO_INCREMENT,
-    	nome varchar(100) NOT NULL,
-    	tipo varchar(100) NOT NULL,
-    	data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
-    	PRIMARY KEY (id)
-)
+        id int(3) AUTO_INCREMENT,
+        nome varchar(100) NOT NULL,
+        tipo varchar(100) NOT NULL,
+        data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
+        PRIMARY KEY (id)
+);
+
 CREATE TABLE categoria_usuario(
-		id int(3) AUTO_INCREMENT,
-  		nome_categoria` varchar(100) NOT NULL
-)
+        id int(3) AUTO_INCREMENT,
+        nome_categoria varchar(100) NOT null,
+        PRIMARY KEY (id)
+);
 
 INSERT INTO categoria_usuario(nome_categoria) VALUES ('Administradores');
-INSERT INTO categoria_usuario(nome_categoria) VALUES ('Usuarios')
+INSERT INTO categoria_usuario(nome_categoria) VALUES ('Usuarios');
 
 ALTER TABLE favorito
 ADD CONSTRAINT fk_ID_usuario
@@ -86,8 +97,6 @@ REFERENCES usuarios(id)
 ON DELETE CASCADE
 ON UPDATE CASCADE;
 
-ALTER TABLE historico ADD evento varchar(10);
-
 ALTER TABLE historico 
 ADD CONSTRAINT fk_ID_graficohistorico 
 FOREIGN KEY (grafico_id) 
@@ -115,9 +124,3 @@ FOREIGN KEY (categoria_id)
 REFERENCES categoria_usuario(id) 
 ON DELETE CASCADE 
 ON UPDATE CASCADE;
-
-
-
-
-
-

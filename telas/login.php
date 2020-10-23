@@ -54,6 +54,7 @@
           <div class="field">
             <input type="password" name="senha" placeholder="Senha" required>
           </div>
+
           <?php
             if(isset($_SESSION['nao_autenticado'])):
           ?>
@@ -66,6 +67,46 @@
           endif;
           unset($_SESSION['nao_autenticado']);
           ?>
+
+          <?php
+            if(isset($_SESSION['usuario_existe'])):
+          ?>
+          <p align="center" color="red">
+            <font color="red">
+            E-mail já cadastrado.
+            </font>
+          </p>
+          <?php
+          endif;
+          unset($_SESSION['usuario_existe']);
+          ?>
+
+          <?php
+            if(isset($_SESSION['erro_cadastro'])):
+          ?>
+          <p align="center" color="red">
+            <font color="red">
+            Erro na hora de criar a conta.
+            </font>
+          </p>
+          <?php
+          endif;
+          unset($_SESSION['erro_cadastro']);
+          ?>
+
+          <?php
+            if(isset($_SESSION['usuario_criado'])):
+          ?>
+          <p align="center" color="red">
+            <font color="green">
+            Conta criada, faça login.
+            </font>
+          </p>
+          <?php
+          endif;
+          unset($_SESSION['usuario_criado']);
+          ?>
+          
           <div class="pass-link">
             <a href="#">Esqueceu a senha?</a>
           </div>
