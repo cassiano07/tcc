@@ -60,7 +60,8 @@ if(isset($anexo))
 
 		if($usuario_id)
 		{
-			if(!$_SESSION['usuario'])
+
+			if(!isset($_SESSION['usuario']))
 			{
 				$_SESSION['usuario'] = 'anonimo';
 				$_SESSION['conteudo'] = $usuario_id;

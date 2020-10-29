@@ -1,11 +1,17 @@
-var ctx = document.getElementById('myChartLine').getContext('2d');
+
+
+function valorphp(dimensoes, metricas)
+{
+	document.write(dimensoes);
+
+	var ctx = document.getElementById('myChartLine').getContext('2d');
 		var chart = new Chart(ctx, {
 		    // The type of chart we want to create
 		    type: 'line',
 
 		    // The data for our dataset
 		    data: {
-		        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+		        labels: [dimensoes],
 		        datasets: 
 		        [{
 		            label: 'Grafico de linha',
@@ -14,13 +20,17 @@ var ctx = document.getElementById('myChartLine').getContext('2d');
 		            ],
 		            borderWidth: 6,
 		            borderColor: 'rgba(54, 162, 235, 0.5)',
-		            data: [0, 10, 5, 2, 20, 30, 45]
+		            data: [metricas]
 		        }]
 		    },
 
 		    // Configuration options go here
 		    options: {}
 		});
+}
+
+
+
 
 
 var ctx1 = document.getElementById('myChartBarra').getContext('2d');

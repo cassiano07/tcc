@@ -109,7 +109,7 @@ function processamento($colunas, $linhas, $nome_arquivo)
 
 	$usuario_id = rand(1, 1000);
 
-	$sql = "INSERT INTO conteudo_arquivo (titulo, dados, user_id) VALUES ('{$nome_arquivo}','{$dados_for_database}', '{$usuario_id}')";
+	$sql = "INSERT INTO conteudo_arquivo (titulo, dados, usuario_id) VALUES ('{$nome_arquivo}','{$dados_for_database}', '{$usuario_id}')";
 	
 	$result = mysqli_query($connect, $sql);
 
