@@ -130,6 +130,13 @@ function processamento($colunas, $linhas, $nome_arquivo)
 	$execute = mysqli_query($connect, $query);
 	$rows = mysqli_fetch_array($execute);
 
+	if($_SESSION['usuario'] != 'anonimo')
+	{
+		$sql3 = "INSERT INTO  historico (grafico_id, conteudo_id,evento, usuario_id, favorito_id) VALUES ( 0, ".$rows['id'].", 'Dados armazenados', ".$usuario_id.", 0)";
+		mysqli_query($connect, $sql3);
+	}
+
+
 	if($result == true)
 	{
 		return $rows;
