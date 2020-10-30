@@ -26,8 +26,9 @@ include('./php/verificar_login.php');
 
 		<ul>
 			<li><a href="./dashbord.php"><?php $usuario = explode("@",$_SESSION['usuario']); echo $usuario[0];?></a></li>
-			<li><a href="#">FAVORITOS</a></li>
+			<li><a href="./favoritos.php">FAVORITOS</a></li>
 			<li><a class="active" href="./historico.php">HISTÓRICO</a></li>
+			<li><a href="../index.html">ARQUIVO</a></li>
 			<li><a href="./php/logout.php">LOGOUT</a></li>
 		</ul>
 	</nav>

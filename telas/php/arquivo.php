@@ -46,7 +46,7 @@ if(isset($anexo))
 			}
 			else
 			{
-				echo 'linha '.$count_valores.' com erro, verifique se algum dado está com virgula a onde não deveria <br>';
+				echo '<script> alert("linha '.$count_valores.' com erro, verifique se algum dado está com virgula a onde não deveria"); window.location.href ="../../index.html";</script>"';
 				exit();
 			}
 

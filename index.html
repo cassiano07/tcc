@@ -77,21 +77,34 @@
 
         <div id="formulario">
           <form action="./telas/php/arquivo.php"  enctype="multipart/form-data" method="post" class="arquivo">
-
             <input type='file' id="getFile" name="anexo" class="buttons" accept=".csv,.xls,.xlsx" required="required">
-
             <input type="submit" id="campo" class="submit" value="Carregar" >   
           </form>
         </div>
+            <p>Nesse campo o usuário fara o envio de seu arquivo para que seja feita a análise de seus dados para confirmarmos se esses dados estão aptos para serem processados.
+            OBS.: Esses arquivos devem ser separados por vírgulas, porém, em cada informação dos dados não podem conter vírgulas.
+            Segue o exemplo abaixo, como cor AZUL o que PODE conter vírgula e cor VERMELHA o que NÃO PODE conter vírgula.
+            Ex.: 
+            </p>
+            <img align="center" src="./telas/img/exemplo.jpg">
     </div>
-
+    <hr color="black">
     <!-- ZONA DE PROCESSAMENTO-->
-    <div class="processa" id="load"> 
-      <p>Explicando sobre o processamento</p>
+    <div class="processa" id="load">
+      <div id="processa_centro">
+        <div id="processa_texto">
+          <p>Nessa etapa (se os dados estiverem aptos) faremos a separação de todas as colunas e as classificaremos por números e textos, nas quais o usuário deverá escolher uma forma de texto e outra de número e qual forma deverá ser feito. Exemplo: Soma, multiplicação, contagem ou nenhum.
+          </p>
+          <p>
+            Se tudo ocorreu como deveria, o sistema encaminhara o usuário para uma próxima página onde o usuário encontrara o seu arquivo em forma de dashboard (painel de gráficos), podendo fazer download para o seu aparelho ou criar uma conta e deixar salvo em nosso site.
+          </p>
+        </div>
+      </div>
     </div>
 
     <!-- BODY - GRAFICOS -->
       <div class="fundo_grafico" id="visualization">
+        <h1 align="center">Abaixo o usuário poderá ver os exemplos de gráficos que serão apresentados após todo o processo de análise.</h1>
       	<section class="flex">
       		<div class="color">
       			<canvas id="myChartLine"></canvas>

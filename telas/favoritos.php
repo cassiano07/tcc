@@ -91,43 +91,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
   
     <div id="select">
       <div id="name_project">
-        <p>Dashboard</p>
-      </div>
-
-      <div id="alinha">
-        <form action="./dashbord.php" method="post" id="formulario">
-          <label class="space"><?php  echo $titulo[0]; ?></label> <!-- aqui será adicionado via php o nome do arquivo-->
-            <select class="space"  name="dimensao" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são texto-->
-              <?php
-              if(isset($dimensoes))
-              {
-                foreach ($dimensoes as $dimensao)
-                {
-                  echo '<option value="'.$dimensao.'">'.$dimensao.'</option>';
-                }
-              }
-              ?>
-            </select>
-            <select class="space" name="metrica" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
-              <?php
-              if(isset($metricas))
-              {
-                foreach ($metricas as $metrica)
-                {
-                  echo '<option value="'.$metrica.'">'.$metrica.'</option>';
-                }
-              }
-              ?>
-            </select>
-            <select class="space" name="operacao" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
-               <option value="soma"> Soma </option>
-               <option value="multiplicacao"> Multiplicação </option>
-               <option value="contagem"> Contagem </option>
-               <option value="nenhum"> Nenhum </option>
-            </select>
-            <input type="hidden" name="conteudo" <?php echo isset($rows['dados']) ? 'value="'.$rows['dados'].'"': '';?> >
-          <input type="submit" name="gerar" value="Gerar" class="space">
-        </form>
+        <p>Favoritos</p>
       </div>
     </div>
 
