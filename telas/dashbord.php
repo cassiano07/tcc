@@ -39,9 +39,15 @@ $create_variable = "<script>
             var metrica = '".json_encode($metrica_values)."';
             var nome_metrica = '".$metrica."';
             var nome_dimensao = '".$dimensao."';
+            var dimensao_json =JSON.parse(dimensao);
+            var metrica_json =JSON.parse(metrica);
+            dimensao_array = Array.from(dimensao_json);
+            metrica_array = Array.from(metrica_json);
           </script>";
 
 echo $create_variable;
+
+
   
 ?>
 <!DOCTYPE html>
@@ -55,6 +61,7 @@ echo $create_variable;
   <link rel="stylesheet" type="text/css" href="./css/style_dashbord.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./javascript/dashboard_graficos.js"></script>
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- MENU -->
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>  <!-- MENU -->
@@ -118,81 +125,32 @@ echo $create_variable;
 
 
       <!-- BODY - GRAFICOS -->            
-        <section class="flex">
-          <div class="color">
-            <canvas id="myChartLine"></canvas>
-            <script type="text/javascript">
-  
-              var ctx = document.getElementById('myChartLine').getContext('2d');
-              var chart = new Chart(ctx, {
-                  // The type of chart we want to create
-                  type: 'line',
-
-                  // The data for our dataset
-                  data: {
-                      labels: [],
-                      datasets:
-                      [{
-                          label: [],
-                          backgroundColor: [
-                            'rgba(56, 99, 132, 1)',
-                          ],
-                          borderWidth: 6,
-                          borderColor: 'rgba(54, 162, 235, 0.5)',
-                          data: [],
-                      }]
-                  },
-
-                  // Configuration options go here
-                  options: {}
-              });
-
-              var dimensao_json =JSON.parse(dimensao);
-              var metrica_json =JSON.parse(metrica);
-              var dimensao_array = [];
-              var metrica_array = [];
-
-              dimensao_array = Array.from(dimensao_json);
-              metrica_array = Array.from(metrica_json);
-
-              for(var i = 0; i < dimensao_array.length; i++)
-              {
-                chart.data.labels.push(dimensao_array[i].substr(0,10));
-
-                chart.data.datasets[0].data.push(metrica_array[i]);
-              }
-
-              var label;
-
-              if(nome_dimensao !=  '')
-              {
-                label= nome_dimensao.concat(' por ');
-                label= label.concat(nome_metrica);
-                chart.data.datasets[0].label.push(label);
-              }
-
-            </script>
-          </div>
-          <div>
-            <canvas id="myChartBarra"></canvas>
-            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
-          </div>
-          <div>
-            <canvas id="myChartRadar"></canvas>
-            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
-          </div>
-          <div>
-            <canvas id="myChartPie"></canvas>
-            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
-          </div>
-          <div>
-            <canvas id="myChartPolarArea"></canvas>
-            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
-          </div>
-          <div>
-            <canvas id="myChartLine2"></canvas>
-            <script type="text/javascript" src="./javascript/dashboard_graficos.js"></script>
-          </div>
+    <section class="flex">
+      <div class="color">
+        <canvas id="myChartLine"></canvas>
+        <script type="text/javascript"> alert(dimensao_array); line(dimensao_array, metrica_array, nome_dimensao);</script>
+      </div>
+      <div>
+        <canvas id="myChartBarra"></canvas>
+        <script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>
+      </div>
+      <div>
+        <canvas id="myChartRadar"></canvas>
+        <script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>
+      </div>
+      <div>
+        <canvas id="myChartPie"></canvas>
+        <script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>
+      </div>
+      <div>
+        <canvas id="myChartPolarArea"></canvas>
+        <script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>
+      </div>
+      <div>
+        <canvas id="myChartLine2"></canvas>
+        <script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>
+      </div>
+    </section>
 
 </body>
 </html>
