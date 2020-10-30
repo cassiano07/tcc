@@ -54,26 +54,27 @@ if(isset($anexo))
 			
 		}
 		
-		$usuario_id = processamento($colunas, $linhas, $nome_arquivo);
+		$conteudo = processamento($colunas, $linhas, $nome_arquivo);
 
-
-
-		if($usuario_id)
+		if($conteudo)
 		{
-
 			if(!isset($_SESSION['usuario']))
 			{
 				$_SESSION['usuario'] = 'anonimo';
-				$_SESSION['conteudo'] = $usuario_id;
+				$_SESSION['conteudo'] = $conteudo['id'];
+				$_SESSION['usuario_id'] = $conteudo['usuario_id'];
 				header('Location: ../dashbord.php');
+			}
+			else
+			{
+				$_SESSION['conteudo'] = $conteudo['id'];
+				header('Location: ../dashbord.php');	
 			}	
 		}
 		else
 		{
-			echo $dados_for_database;
+			header('Location: ../../index.html');
 		}
-
-	
 	}
 }
 else

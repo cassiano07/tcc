@@ -12,12 +12,12 @@ $query = "select * from usuarios where email = '{$email}' and senha ='{$senha}'"
 
 $result = mysqli_query($connect, $query);
 $rows = mysqli_num_rows($result);
-
-print_r($rows);
+$rows2 = mysqli_fetch_array($result);
 
 
 if($rows == 1) {
-	echo $_SESSION['usuario'] = $email;
+	$_SESSION['usuario'] = $email;
+	$_SESSION['usuario_id'] = $rows2['id'];
 	header('Location: ../dashbord.php');
 	exit();
 } else {

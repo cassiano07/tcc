@@ -4,51 +4,53 @@ include('./php/verificar_login.php');
 include('./php/dashboard.php');
 include('./php/dados.php');
 
-$anonimo = $_SESSION['usuario'];
-$conteudo = $_SESSION['conteudo'];
+  $anonimo = '';
+  $titulo = ['nome do arquivo'];
 
-$conexao =  connect();
-$grafico  = '';
-
-$query = "select titulo, dados from conteudo_arquivo  where usuario_id = '{$conteudo}'";
-
-$result = mysqli_query($conexao, $query);
-$rows = mysqli_fetch_array($result);
-
-$metricas = colunas($rows['dados'], 'metrica');
-
-$dimensoes = colunas($rows['dados'], 'dimensao');
-
-$dimensao = ( isset($_POST['dimensao']) ) ? $_POST['dimensao'] : null;
-$metrica = ( isset($_POST['metrica']) ) ? $_POST['metrica'] : null;
-$operacao = ( isset($_POST['operacao']) ) ? $_POST['operacao'] : null;
-$conteudo = ( isset($_POST['conteudo']) ) ? $_POST['conteudo'] : null;
-
-$dimensao_values = '';
-$metrica_values = '';
-
-
-if($dimensao != null || $metrica != null || $operacao != null || $conteudo != null)
+if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
 {
-	$dimensao_values = dados($conteudo, $dimensao, $metrica, $operacao, 'dimensao');
-  $metrica_values = dados($conteudo, $dimensao, $metrica, $operacao, 'metrica');
-}
+  $anonimo = $_SESSION['usuario'];
+  $conteudo = $_SESSION['conteudo'];
 
-$create_variable = "<script> 
-            var dimensao = '".json_encode($dimensao_values)."';
-            var metrica = '".json_encode($metrica_values)."';
-            var nome_metrica = '".$metrica."';
-            var nome_dimensao = '".$dimensao."';
-            var dimensao_json =JSON.parse(dimensao);
-            var metrica_json =JSON.parse(metrica);
-            dimensao_array = Array.from(dimensao_json);
-            metrica_array = Array.from(metrica_json);
-          </script>";
-
-echo $create_variable;
-
-
+  $conexao =  connect();
   
+  $query = "select titulo, dados from conteudo_arquivo  where id = '{$conteudo}'";
+
+  $result = mysqli_query($conexao, $query);
+  $rows = mysqli_fetch_array($result);
+
+  $metricas = colunas($rows['dados'], 'metrica');
+  $dimensoes = colunas($rows['dados'], 'dimensao');
+  $titulo = explode('.',$rows['titulo']);
+
+  $dimensao = ( isset($_POST['dimensao']) ) ? $_POST['dimensao'] : null;
+  $metrica = ( isset($_POST['metrica']) ) ? $_POST['metrica'] : null;
+  $operacao = ( isset($_POST['operacao']) ) ? $_POST['operacao'] : null;
+  $conteudo = ( isset($_POST['conteudo']) ) ? $_POST['conteudo'] : null;
+
+  $dimensao_values = '';
+  $metrica_values = '';
+
+
+  if($dimensao != null || $metrica != null || $operacao != null || $conteudo != null)
+  {
+  	$dimensao_values = dados($conteudo, $dimensao, $metrica, $operacao, 'dimensao');
+    $metrica_values = dados($conteudo, $dimensao, $metrica, $operacao, 'metrica');
+  }
+
+  $create_variable = "<script> 
+              var dimensao = '".json_encode($dimensao_values)."';
+              var metrica = '".json_encode($metrica_values)."';
+              var nome_metrica = '".$metrica."';
+              var nome_dimensao = '".$dimensao."';
+              var dimensao_json =JSON.parse(dimensao);
+              var metrica_json =JSON.parse(metrica);
+              dimensao_array = Array.from(dimensao_json);
+              metrica_array = Array.from(metrica_json);
+            </script>";
+
+  echo $create_variable;
+}
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -80,6 +82,7 @@ echo $create_variable;
       <li><a class="active" href="#"><?php $usuario = explode("@",$_SESSION['usuario']); echo $usuario[0];?></a></li>
       <li><?php  echo $anonimo == 'anonimo' ? '<a href="#">' : '<a href="./favoritos.php">';?>FAVORITOS</a></li>
       <li><?php  echo $anonimo == 'anonimo' ? '<a href="#">' : '<a href="./historico.php">';?>HISTÓRICO</a></li>
+      <li><a href="../index.html">ARQUIVO</a></li>
       <li><a href="./php/logout.php">LOGOUT</a></li>
     </ul>
   </nav>
@@ -93,22 +96,27 @@ echo $create_variable;
 
       <div id="alinha">
         <form action="./dashbord.php" method="post" id="formulario">
-          <label class="space"><?php $titulo = explode('.',$rows['titulo']); echo $titulo[0]; ?></label> <!-- aqui será adicionado via php o nome do arquivo-->
+          <label class="space"><?php  echo $titulo[0]; ?></label> <!-- aqui será adicionado via php o nome do arquivo-->
             <select class="space"  name="dimensao" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são texto-->
               <?php
-              foreach ($dimensoes as $dimensao)
+              if(isset($dimensoes))
               {
-                echo '<option value="'.$dimensao.'">'.$dimensao.'</option>';
+                foreach ($dimensoes as $dimensao)
+                {
+                  echo '<option value="'.$dimensao.'">'.$dimensao.'</option>';
+                }
               }
               ?>
             </select>
             <select class="space" name="metrica" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
               <?php
-              foreach ($metricas as $metrica)
+              if(isset($metricas))
               {
-                echo '<option value="'.$metrica.'">'.$metrica.'</option>';
+                foreach ($metricas as $metrica)
+                {
+                  echo '<option value="'.$metrica.'">'.$metrica.'</option>';
+                }
               }
-
               ?>
             </select>
             <select class="space" name="operacao" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
@@ -117,7 +125,7 @@ echo $create_variable;
                <option value="contagem"> Contagem </option>
                <option value="nenhum"> Nenhum </option>
             </select>
-            <input type="hidden" name="conteudo" <?php echo'value="'.$rows['dados'].'"'?> >
+            <input type="hidden" name="conteudo" <?php echo isset($rows['dados']) ? 'value="'.$rows['dados'].'"': '';?> >
           <input type="submit" name="gerar" value="Gerar" class="space">
         </form>
       </div>
@@ -128,7 +136,7 @@ echo $create_variable;
     <section class="flex">
       <div class="color">
         <canvas id="myChartLine"></canvas>
-        <script type="text/javascript"> alert(dimensao_array); line(dimensao_array, metrica_array, nome_dimensao);</script>
+        <script type="text/javascript"> line(dimensao_array, metrica_array, nome_dimensao);</script>
       </div>
       <div>
         <canvas id="myChartBarra"></canvas>

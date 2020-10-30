@@ -107,16 +107,32 @@ function processamento($colunas, $linhas, $nome_arquivo)
 
 	$connect = connect();
 
-	$usuario_id = rand(1, 1000);
+	if(isset($_SESSION['usuario']))
+	{
+		$usuario_id = $_SESSION['usuario_id'];
+	}
+	else
+	{
+		$usuario_id = rand(1, 1000);
+	}
+
+	if(isset($_SESSION['conteudo']) AND $_SESSION['usuario'] == 'anonimo')
+	{
+		$conteudo_id = $_SESSION['conteudo'];
+		$sql2 = "DELETE FROM conteudo_arquivo WHERE id = '{$conteudo_id}'";
+		mysqli_query($connect, $sql2);
+	}
 
 	$sql = "INSERT INTO conteudo_arquivo (titulo, dados, usuario_id) VALUES ('{$nome_arquivo}','{$dados_for_database}', '{$usuario_id}')";
-	
 	$result = mysqli_query($connect, $sql);
+
+	$query = "select id,usuario_id from conteudo_arquivo  where usuario_id = '{$usuario_id}' and titulo = '{$nome_arquivo}' order by id desc limit 1";
+	$execute = mysqli_query($connect, $query);
+	$rows = mysqli_fetch_array($execute);
 
 	if($result == true)
 	{
-
-		return $usuario_id;
+		return $rows;
 	} 
 	else
 	{
