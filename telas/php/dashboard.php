@@ -113,7 +113,7 @@ function processamento($colunas, $linhas, $nome_arquivo)
 	}
 	else
 	{
-		$usuario_id = rand(1, 1000);
+		$usuario_id = rand(5000, 10000);
 	}
 
 	if(isset($_SESSION['conteudo']) AND $_SESSION['usuario'] == 'anonimo')
@@ -144,7 +144,5 @@ function processamento($colunas, $linhas, $nome_arquivo)
 	else
 	{
 		return 'erro na inserção';
-	}
-
-	
+	}	
 }
