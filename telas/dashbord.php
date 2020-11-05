@@ -14,8 +14,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
 
   $conexao =  connect();
   
-  $query = "select titulo, dados from conteudo_arquivo  where id = '{$conteudo}'";
-
+  $query = "select titulo, dados from conteudo_arquivo  where id = ".$conteudo;
   $result = mysqli_query($conexao, $query);
   $rows = mysqli_fetch_array($result);
 
@@ -36,20 +35,23 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
   {
   	$dimensao_values = dados($conteudo, $dimensao, $metrica, $operacao, 'dimensao');
     $metrica_values = dados($conteudo, $dimensao, $metrica, $operacao, 'metrica');
+
+    $dimensao_values  = str_replace("\t", ' ', $dimensao_values);
+    $dimensao_values  = str_replace("'", '',$dimensao_values);
+
+    $create_variable = "<script> 
+    var dimensao = '".json_encode($dimensao_values)."';
+    var metrica = '".json_encode($metrica_values)."';
+    var nome_metrica = '".$metrica."';
+    var nome_dimensao = '".$dimensao."';
+    var dimensao_json =JSON.parse(dimensao);
+    var metrica_json =JSON.parse(metrica);
+    var dimensao_array = Array.from(dimensao_json);
+    var metrica_array = Array.from(metrica_json);
+    </script>";
+
+    echo $create_variable;
   }
-
-  $create_variable = "<script> 
-              var dimensao = '".json_encode($dimensao_values)."';
-              var metrica = '".json_encode($metrica_values)."';
-              var nome_metrica = '".$metrica."';
-              var nome_dimensao = '".$dimensao."';
-              var dimensao_json =JSON.parse(dimensao);
-              var metrica_json =JSON.parse(metrica);
-              dimensao_array = Array.from(dimensao_json);
-              metrica_array = Array.from(metrica_json);
-            </script>";
-
-  echo $create_variable;
 }
 ?>
 <!DOCTYPE html>
@@ -57,7 +59,6 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
 <head>
   <title>Dashbord</title>
   <meta charset="utf-8">
-  <link rel="stylesheet" type="text/css" href="./css/dashbord.css">
   <link rel="stylesheet" type="text/css" href="./css/menu.css">
   <link rel="stylesheet" type="text/css" href="./css/graficos.css">
   <link rel="stylesheet" type="text/css" href="./css/style_dashbord.css">
@@ -97,7 +98,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
       <div id="alinha">
         <form action="./dashbord.php" method="post" id="formulario">
           <label class="space"><?php  echo $titulo[0]; ?></label> <!-- aqui será adicionado via php o nome do arquivo-->
-            <select class="space"  name="dimensao" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são texto-->
+            <select class="space"  name="dimensao"><!-- aqui será adicionado via php o nome das colunas que são texto-->
               <?php
               if(isset($dimensoes))
               {
@@ -108,7 +109,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
               }
               ?>
             </select>
-            <select class="space" name="metrica" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
+            <select class="space" name="metrica"><!-- aqui será adicionado via php o nome das colunas que são números-->
               <?php
               if(isset($metricas))
               {
@@ -119,7 +120,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
               }
               ?>
             </select>
-            <select class="space" name="operacao" id="exampleFormControlSelect1"><!-- aqui será adicionado via php o nome das colunas que são números-->
+            <select class="space" name="operacao"><!-- aqui será adicionado via php o nome das colunas que são números-->
                <option value="soma"> Soma </option>
                <option value="multiplicacao"> Multiplicação </option>
                <option value="contagem"> Contagem </option>

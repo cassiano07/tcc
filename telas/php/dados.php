@@ -70,11 +70,11 @@ function dados($dados, $dimensao, $metrica, $operacao, $type)
 					case 'soma':
 						if($contador_if == 0)
 						{
-							$resultado_metrica = $valores_coluna_metrica[$key];
+							$resultado_metrica = floatval($valores_coluna_metrica[$key]);
 						}
 						else
 						{
-							$resultado_metrica = $resultado_metrica + $valores_coluna_metrica[$key];
+							$resultado_metrica = $resultado_metrica + floatval($valores_coluna_metrica[$key]);
 							unset($valores_coluna_dimensao[$key]);
 							unset($valores_coluna_metrica[$key]);
 						}
@@ -85,11 +85,11 @@ function dados($dados, $dimensao, $metrica, $operacao, $type)
 					case 'multiplicacao':
 						if($contador_if == 0)
 						{
-							$resultado_metrica = $valores_coluna_metrica[$key];
+							$resultado_metrica = floatval($valores_coluna_metrica[$key]);
 						}
 						else
 						{
-							$resultado_metrica = $resultado_metrica * $valores_coluna_metrica[$key];
+							$resultado_metrica = $resultado_metrica * floatval($valores_coluna_metrica[$key]);
 							unset($valores_coluna_dimensao[$key]);
 							unset($valores_coluna_metrica[$key]);
 						}

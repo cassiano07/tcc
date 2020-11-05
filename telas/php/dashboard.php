@@ -123,17 +123,22 @@ function processamento($colunas, $linhas, $nome_arquivo)
 		mysqli_query($connect, $sql2);
 	}
 
-	$sql = "INSERT INTO conteudo_arquivo (titulo, dados, usuario_id) VALUES ('{$nome_arquivo}','{$dados_for_database}', '{$usuario_id}')";
+	//Inserindo dados do usuário no banco
+	$sql = 'INSERT INTO conteudo_arquivo (titulo, dados, usuario_id) VALUES ("'.$nome_arquivo.'", "'.$dados_for_database.'", '.$usuario_id.');';
 	$result = mysqli_query($connect, $sql);
 
+	//trazendo os dados inseridos para criar o usuário anonimo com os dados que ele criou
 	$query = "select id,usuario_id from conteudo_arquivo  where usuario_id = '{$usuario_id}' and titulo = '{$nome_arquivo}' order by id desc limit 1";
 	$execute = mysqli_query($connect, $query);
 	$rows = mysqli_fetch_array($execute);
 
-	if($_SESSION['usuario'] != 'anonimo')
+	if(isset($_SESSION['usuario']))
 	{
-		$sql3 = "INSERT INTO  historico (grafico_id, conteudo_id,evento, usuario_id, favorito_id) VALUES ( 0, ".$rows['id'].", 'Dados armazenados', ".$usuario_id.", 0)";
-		mysqli_query($connect, $sql3);
+		if($_SESSION['usuario'] != 'anonimo')
+		{
+			$sql3 = "INSERT INTO  historico (grafico_id, conteudo_id,evento, usuario_id, favorito_id) VALUES ( 0, ".$rows['id'].", 'Dados armazenados', ".$usuario_id.", 0)";
+			mysqli_query($connect, $sql3);
+		}
 	}
 
 
