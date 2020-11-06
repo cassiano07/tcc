@@ -138,26 +138,74 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
       <div class="color">
         <canvas id="myChartLine"></canvas>
         <script type="text/javascript"> line(dimensao_array, metrica_array, nome_dimensao);</script>
+        <div class="legenda">
+          <div class="favorito">
+            <img src="./img/favorito.png"></img>
+          </div>
+          <div class="download">
+            <img src="./img/download.png"></img>
+          </div>
+        </div>
       </div>
       <div>
         <canvas id="myChartBarra"></canvas>
         <script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>
+        <div class="legenda">
+            <div class="favorito">
+              <img src="./img/favorito.png"></img>
+            </div>
+            <div class="download">
+              <img src="./img/download.png"></img>
+            </div>
+        </div>
       </div>
       <div>
         <canvas id="myChartRadar"></canvas>
         <script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>
+        <div class="legenda">
+            <div class="favorito">
+              <img src="./img/favorito.png"></img>
+            </div>
+            <div class="download">
+              <img src="./img/download.png"></img>
+            </div>
+        </div>
       </div>
       <div>
         <canvas id="myChartPie"></canvas>
         <script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>
+        <div class="legenda">
+            <div class="favorito">
+              <img src="./img/favorito.png"></img>
+            </div>
+            <div class="download">
+              <img src="./img/download.png"></img>
+            </div>
+        </div>
       </div>
       <div>
         <canvas id="myChartPolarArea"></canvas>
         <script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>
+        <div class="legenda">
+            <div class="favorito">
+              <img src="./img/favorito.png"></img>
+            </div>
+            <div class="download">
+              <img src="./img/download.png"></img>
+            </div>
+        </div>
       </div>
       <div>
         <canvas id="myChartLine2"></canvas>
         <script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>
+        <div class="legenda">
+            <div class="favorito">
+              <img src="./img/favorito.png"></img>
+            </div>
+            <div class="download">
+              <img src="./img/download.png"></img>
+            </div>
+        </div>
       </div>
     </section>
 
