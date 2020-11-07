@@ -1,5 +1,7 @@
 CREATE DATABASE EA;
 
+CREATE DATABASE EA;
+
 use ea;
 
 CREATE TABLE usuarios(
@@ -28,6 +30,9 @@ CREATE TABLE conteudo_arquivo(
 CREATE TABLE favorito(
         id int(3) AUTO_INCREMENT,
         conteudo_id int(3) NOT NULL,
+        dimensao varchar(100) NOT NULL,
+        metrica varchar(100) NOT NULL,
+        operacao varchar(100) NOT NULL,
         grafico_id int(3) NOT NULL,
         usuario_id int(5) NOT NULL,
         data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -61,6 +66,8 @@ CREATE TABLE categoria_usuario(
 
 INSERT INTO categoria_usuario(nome_categoria) VALUES ('Administradores');
 INSERT INTO categoria_usuario(nome_categoria) VALUES ('Usuarios');
+INSERT INTO grafico (id, nome, tipo) VALUES (1, 'Gráfico de linha', 'line'), (2, 'Gráfico de barra', 'bar'), (3, 'Gráfico de Radar', 'radar'), (4, 'Gráfico de Torta', 'pie'), (5, 'Gráfico Aréa Polar', 'polararea'), (6, 'Gráfico de Linha Simples', 'linesimple');
+
 
 ALTER TABLE favorito
 ADD CONSTRAINT fk_ID_usuario
