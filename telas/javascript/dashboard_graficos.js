@@ -277,3 +277,19 @@ function lineSimple(dimensoes, metricas, nome_dimensao = null)
 	myChartLine2.data.datasets[0].label.push(label);
 	}
 }
+
+function SalvarFavorito(grafico_id, conteudo_id, usuario, usuario_id)
+{
+	if(usuario == 'anonimo')
+	{
+		alert('Crie uma conta para usufluir dessa permissão'+usuario);
+	}
+	else
+	{
+		var xmlhttp = new XMLHttpRequest();
+		var url = "http://localhost/tcc/telas/php/salvar_favoritos.php?grafico_id=" + grafico_id + "&conteudo_id=" + conteudo_id + "&usuario_id=" + usuario_id; 
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+		alert('Salvo na tela de favoritos');
+	}
+}

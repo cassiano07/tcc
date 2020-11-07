@@ -5,7 +5,6 @@ include('./php/dashboard.php');
 include('./php/dados.php');
 
   $anonimo = '';
-  $titulo = ['nome do arquivo'];
 
 if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
 {
@@ -21,7 +20,6 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
 
   $metricas = colunas($rows['dados'], 'metrica');
   $dimensoes = colunas($rows['dados'], 'dimensao');
-  $titulo = explode('.',$rows['titulo']);
 
   $dimensao = ( isset($_POST['dimensao']) ) ? $_POST['dimensao'] : null;
   $metrica = ( isset($_POST['metrica']) ) ? $_POST['metrica'] : null;

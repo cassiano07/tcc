@@ -10,11 +10,11 @@ include('./php/dados.php');
 if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
 {
   $anonimo = $_SESSION['usuario'];
-  $conteudo = $_SESSION['conteudo'];
+  $conteudo_id = $_SESSION['conteudo'];
 
   $conexao =  connect();
   
-  $query = "select titulo, dados from conteudo_arquivo  where id = ".$conteudo;
+  $query = "select titulo, dados from conteudo_arquivo  where id = ".$conteudo_id;
   $result = mysqli_query($conexao, $query);
   $rows = mysqli_fetch_array($result);
 
@@ -39,6 +39,11 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
     $dimensao_values  = str_replace("\t", ' ', $dimensao_values);
     $dimensao_values  = str_replace("'", '',$dimensao_values);
 
+    if($conteudo_id == null)
+    {
+      $conteudo_id = 0;
+    }
+
     $create_variable = "<script> 
     var dimensao = '".json_encode($dimensao_values)."';
     var metrica = '".json_encode($metrica_values)."';
@@ -52,6 +57,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
 
     echo $create_variable;
   }
+
 }
 ?>
 <!DOCTYPE html>
@@ -132,14 +138,14 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
       </div>
     </div>
 
-
+    
       <!-- BODY - GRAFICOS -->            
     <section class="flex">
       <div class="color">
         <canvas id="myChartLine"></canvas>
-        <script type="text/javascript"> line(dimensao_array, metrica_array, nome_dimensao);</script>
+        <script type="text/javascript">line(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-          <div class="favorito">
+          <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 1,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
             <img src="./img/favorito.png"></img>
           </div>
           <div class="download">
@@ -151,7 +157,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartBarra"></canvas>
         <script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito">
+            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 2,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
@@ -163,7 +169,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartRadar"></canvas>
         <script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito">
+            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 3,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
@@ -175,7 +181,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartPie"></canvas>
         <script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito">
+            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 4,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
@@ -187,7 +193,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartPolarArea"></canvas>
         <script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito">
+            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 5,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
@@ -199,7 +205,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartLine2"></canvas>
         <script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito">
+            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 6,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
