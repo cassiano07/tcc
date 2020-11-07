@@ -3,52 +3,16 @@
 include('./php/verificar_login.php');
 include('./php/dashboard.php');
 include('./php/dados.php');
+include('./php/processa_favoritos.php');
 
-  $anonimo = '';
+$anonimo = '';
 
 if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
 {
   $anonimo = $_SESSION['usuario'];
   $conteudo = $_SESSION['conteudo'];
-
-  $conexao =  connect();
-  
-  $query = "select titulo, dados from conteudo_arquivo  where id = '{$conteudo}'";
-
-  $result = mysqli_query($conexao, $query);
-  $rows = mysqli_fetch_array($result);
-
-  $metricas = colunas($rows['dados'], 'metrica');
-  $dimensoes = colunas($rows['dados'], 'dimensao');
-
-  $dimensao = ( isset($_POST['dimensao']) ) ? $_POST['dimensao'] : null;
-  $metrica = ( isset($_POST['metrica']) ) ? $_POST['metrica'] : null;
-  $operacao = ( isset($_POST['operacao']) ) ? $_POST['operacao'] : null;
-  $conteudo = ( isset($_POST['conteudo']) ) ? $_POST['conteudo'] : null;
-
-  $dimensao_values = '';
-  $metrica_values = '';
-
-
-  if($dimensao != null || $metrica != null || $operacao != null || $conteudo != null)
-  {
-  	$dimensao_values = dados($conteudo, $dimensao, $metrica, $operacao, 'dimensao');
-    $metrica_values = dados($conteudo, $dimensao, $metrica, $operacao, 'metrica');
-  }
-
-  $create_variable = "<script> 
-              var dimensao = '".json_encode($dimensao_values)."';
-              var metrica = '".json_encode($metrica_values)."';
-              var nome_metrica = '".$metrica."';
-              var nome_dimensao = '".$dimensao."';
-              var dimensao_json =JSON.parse(dimensao);
-              var metrica_json =JSON.parse(metrica);
-              dimensao_array = Array.from(dimensao_json);
-              metrica_array = Array.from(metrica_json);
-            </script>";
-
-  echo $create_variable;
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -57,7 +21,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="./css/dashbord.css">
   <link rel="stylesheet" type="text/css" href="./css/menu.css">
-  <link rel="stylesheet" type="text/css" href="./css/graficos.css">
+  <link rel="stylesheet" type="text/css" href="./css/graficos_favoritos.css">
   <link rel="stylesheet" type="text/css" href="./css/style_dashbord.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -94,33 +58,91 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
     </div>
 
 
-      <!-- BODY - GRAFICOS -->            
-    <section class="flex">
-      <div class="color">
-        <canvas id="myChartLine"></canvas>
-        <script type="text/javascript"> line(dimensao_array, metrica_array, nome_dimensao);</script>
-      </div>
-      <div>
-        <canvas id="myChartBarra"></canvas>
-        <script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>
-      </div>
-      <div>
-        <canvas id="myChartRadar"></canvas>
-        <script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>
-      </div>
-      <div>
-        <canvas id="myChartPie"></canvas>
-        <script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>
-      </div>
-      <div>
-        <canvas id="myChartPolarArea"></canvas>
-        <script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>
-      </div>
-      <div>
-        <canvas id="myChartLine2"></canvas>
-        <script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>
-      </div>
-    </section>
+<?php 
+  $dimensao_values = '';
+  $metrica_values = '';
 
+  $dados = conteudo($_SESSION['usuario_id']);
+
+  echo '<section class="flex">';
+  foreach($dados as $dado)
+  {
+    $metrica = $dado[2];
+    $dimensao = $dado[1];
+    $dimensao_values = dados($dado[0], $dado[1], $dado[2], $dado[3], 'dimensao');
+    $metrica_values = dados($dado[0], $dado[1], $dado[2], $dado[3], 'metrica');
+
+    $create_variable = "<script> 
+    var dimensao = '".json_encode($dimensao_values)."';
+    var metrica = '".json_encode($metrica_values)."';
+    var nome_metrica = '".$metrica."';
+    var nome_dimensao = '".$dimensao."';
+    var dimensao_json =JSON.parse(dimensao);
+    var metrica_json =JSON.parse(metrica);
+    dimensao_array = Array.from(dimensao_json);
+    metrica_array = Array.from(metrica_json);
+    </script>";
+    echo $create_variable;
+
+    switch($dado[4])
+    {
+        case 1:
+          echo 
+          '
+            <div>
+              <canvas id="myChartLine"></canvas>
+              <script type="text/javascript"> line(dimensao_array, metrica_array, nome_dimensao);</script>
+            </div>
+          ';
+          break;
+        case 2:
+          echo 
+          '
+            <div>
+              <canvas id="myChartBarra"></canvas>
+              <script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>
+            </div>
+          ';
+          break;
+        case 3:
+          echo 
+          '
+            <div>
+              <canvas id="myChartRadar"></canvas>
+              <script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>
+            </div>
+          ';
+          break;
+        case 4:
+          echo 
+          '
+            <div>
+              <canvas id="myChartPie"></canvas>
+              <script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>
+            </div>
+          ';
+          break;
+        case 5:
+          echo 
+          '
+            <div>
+              <canvas id="myChartPolarArea"></canvas>
+              <script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>
+            </div>
+          ';
+          break;
+        case 6:
+          echo 
+          '
+            <div>
+              <canvas id="myChartLine2"></canvas>
+              <script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>
+            </div>
+          ';
+          break;
+    }
+  }
+  echo '</section>';
+?>
 </body>
 </html>
