@@ -145,7 +145,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartLine"></canvas>
         <script type="text/javascript">line(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-          <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 1,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+          <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 1,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
             <img src="./img/favorito.png"></img>
           </div>
           <div class="download">
@@ -157,7 +157,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartBarra"></canvas>
         <script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 2,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 2,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
@@ -169,7 +169,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartRadar"></canvas>
         <script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 3,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 3,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
@@ -181,7 +181,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartPie"></canvas>
         <script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 4,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 4,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
@@ -193,7 +193,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartPolarArea"></canvas>
         <script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 5,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 5,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
@@ -205,7 +205,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartLine2"></canvas>
         <script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($conteudo_id)? 'onclick="SalvarFavorito( 6,'.$conteudo_id.', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 6,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
             <div class="download">
