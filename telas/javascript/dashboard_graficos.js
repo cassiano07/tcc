@@ -1,6 +1,6 @@
 
 
-function line(dimensoes, metricas, nome_dimensao = null)
+function line(dimensoes, metricas, nome_dimensao = null, download = null)
 {
 	var ctx = document.getElementById('myChartLine').getContext('2d');
 		var chart = new Chart(ctx, {
@@ -42,11 +42,26 @@ function line(dimensoes, metricas, nome_dimensao = null)
 	label= label.concat(nome_metrica);
 	chart.data.datasets[0].label.push(label);
 	}
+
+	if(download == 'download')
+	{
+		chart.update({
+			duration: 0
+		 });
+		 // or, use
+		 // chart_variable.update(0);
+	  
+		 /* save as image */
+		 var link = document.createElement('a');
+		 link.href = chart.toBase64Image();
+		 link.download = 'line.png';
+		 link.click();
+	}
 }
 
 
 
-function bar(dimensoes, metricas, nome_dimensao = null)
+function bar(dimensoes, metricas, nome_dimensao = null, download = null)
 {
 	var ctx1 = document.getElementById('myChartBarra').getContext('2d');
 		var myChartBar = new Chart(ctx1, {
@@ -92,9 +107,24 @@ function bar(dimensoes, metricas, nome_dimensao = null)
 	label= label.concat(nome_metrica);
 	myChartBar.data.datasets[0].label.push(label);
 	}
+
+	if(download == 'download')
+	{
+		myChartBar.update({
+			duration: 0
+		 });
+		 // or, use
+		 // chart_variable.update(0);
+	  
+		 /* save as image */
+		 var link = document.createElement('a');
+		 link.href = myChartBar.toBase64Image();
+		 link.download = 'bar.png';
+		 link.click();
+	}
 }
 
-function radar(dimensoes, metricas, nome_dimensao = null)
+function radar(dimensoes, metricas, nome_dimensao = null, download = null)
 {
 	var ctx2 = document.getElementById('myChartRadar').getContext('2d');
 		var myChartRadar = new Chart(ctx2, {
@@ -139,9 +169,23 @@ function radar(dimensoes, metricas, nome_dimensao = null)
 	myChartRadar.data.datasets[0].label.push(label);
 	}
 
+	if(download == 'download')
+	{
+		myChartRadar.update({
+			duration: 0
+		 });
+		 // or, use
+		 // chart_variable.update(0);
+	  
+		 /* save as image */
+		 var link = document.createElement('a');
+		 link.href = myChartRadar.toBase64Image();
+		 link.download = 'radar.png';
+		 link.click();
+	}
 }
 
-function pie(dimensoes, metricas, nome_dimensao = null)
+function pie(dimensoes, metricas, nome_dimensao = null, download = null)
 {
 	var ctx3 = document.getElementById('myChartPie').getContext('2d');
 		var myChartPie = new Chart(ctx3, {
@@ -187,9 +231,24 @@ function pie(dimensoes, metricas, nome_dimensao = null)
 	label= label.concat(nome_metrica);
 	myChartPie.data.datasets[0].label.push(label);
 	}
+
+	if(download == 'download')
+	{
+		myChartPie.update({
+			duration: 0
+		 });
+		 // or, use
+		 // chart_variable.update(0);
+	  
+		 /* save as image */
+		 var link = document.createElement('a');
+		 link.href = myChartPie.toBase64Image();
+		 link.download = 'Pie.png';
+		 link.click();
+	}
 }
 
-function polarArea(dimensoes, metricas, nome_dimensao = null)
+function polarArea(dimensoes, metricas, nome_dimensao = null, download = null)
 {
 	var ctx4 = document.getElementById('myChartPolarArea').getContext('2d');
 		var myChartPolarArea = new Chart(ctx4, {
@@ -235,9 +294,24 @@ function polarArea(dimensoes, metricas, nome_dimensao = null)
 	label= label.concat(nome_metrica);
 	myChartPolarArea.data.datasets[0].label.push(label);
 	}
+
+	if(download == 'download')
+	{
+		myChartPolarArea.update({
+			duration: 0
+		 });
+		 // or, use
+		 // chart_variable.update(0);
+	  
+		 /* save as image */
+		 var link = document.createElement('a');
+		 link.href = myChartPolarArea.toBase64Image();
+		 link.download = 'Polar.png';
+		 link.click();
+	}
 }
 
-function lineSimple(dimensoes, metricas, nome_dimensao = null)
+function lineSimple(dimensoes, metricas, nome_dimensao = null, download = null)
 {
 	var ctx5 = document.getElementById('myChartLine2').getContext('2d');
 		var myChartLine2 = new Chart(ctx5, {
@@ -276,13 +350,28 @@ function lineSimple(dimensoes, metricas, nome_dimensao = null)
 	label= label.concat(nome_metrica);
 	myChartLine2.data.datasets[0].label.push(label);
 	}
+
+	if(download == 'download')
+	{
+		myChartLine2.update({
+			duration: 0
+		 });
+		 // or, use
+		 // chart_variable.update(0);
+	  
+		 /* save as image */
+		 var link = document.createElement('a');
+		 link.href = myChartLine2.toBase64Image();
+		 link.download = 'LineSimple.png';
+		 link.click();
+	}
 }
 
 function SalvarFavorito(grafico_id, conteudo_id, dimensao, metrica, operacao, usuario, usuario_id)
 {
 	if(usuario == 'anonimo')
 	{
-		alert('Crie uma conta para usufluir dessa permissão');
+		alert('Você precisa ser um usuário cadastrado para utilizar essa funcionalidade.');
 	}
 	else
 	{
@@ -293,3 +382,51 @@ function SalvarFavorito(grafico_id, conteudo_id, dimensao, metrica, operacao, us
 		alert('Salvo na tela de favoritos');
 	}
 }
+
+function ApagarFavorito(grafico_id, conteudo_id, dimensao, metrica, operacao, usuario_id)
+{
+
+		var xmlhttp = new XMLHttpRequest();
+		var url = "http://localhost/tcc/telas/php/salvar_favoritos.php?grafico_id=" + grafico_id + "&conteudo_id=" + conteudo_id + "&usuario_id=" + usuario_id + "&dimensao=" + dimensao + "&metrica=" + metrica + "&operacao=" + operacao + "&tipo=apagar"; 
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+		alert('Gráfico removido dos favoritos!');
+		location.reload();
+
+}
+
+function downloadImage(type, usuario)
+{
+	var download = 'download';
+
+	if(usuario == 'anonimo')
+	{
+		alert('Você precisa ser um usuário cadastrado para utilizar essa funcionalidade.');
+		return;
+	}
+
+	switch(type)
+	{
+		case 1:
+			line(dimensao_array, metrica_array, nome_dimensao, download);
+			break;
+		case 2:
+			bar(dimensao_array, metrica_array, nome_dimensao, download);
+			break;
+		case 3:
+			radar(dimensao_array, metrica_array, nome_dimensao, download);
+			break;
+		case 4:
+			pie(dimensao_array, metrica_array, nome_dimensao, download);
+			break;
+		case 5:
+			polarArea(dimensao_array, metrica_array, nome_dimensao, download);
+			break;
+		case 6:
+			lineSimple(dimensao_array, metrica_array, nome_dimensao, download);
+			break;
+	}
+	
+
+	 
+ }

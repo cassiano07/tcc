@@ -87,8 +87,8 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
     <label class="logo"><img src="./img/logo.png"  width="100" height="80"></label>
     <ul>
       <li><a class="active" href="./dashbord.php"><?php $usuario = explode("@",$_SESSION['usuario']); echo $usuario[0];?></a></li>
-      <li><?php  echo $anonimo == 'anonimo' ? '<a href="#">' : '<a href="./favoritos.php">';?>FAVORITOS</a></li>
-      <li><?php  echo $anonimo == 'anonimo' ? '<a href="#">' : '<a href="./historico.php">';?>HISTÓRICO</a></li>
+      <?php  echo $anonimo == 'anonimo' ? '': '<li><a href="./favoritos.php">FAVORITOS</a></li>'?>
+      <?php  echo $anonimo == 'anonimo' ? '': '<li><a href="./historico.php">HISTÓRICO</a></li>'?>
       <li><a href="../index.html">ARQUIVO</a></li>
       <li><a href="./php/logout.php">LOGOUT</a></li>
     </ul>
@@ -143,72 +143,72 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
     <section class="flex">
       <div class="color">
         <canvas id="myChartLine"></canvas>
-        <script type="text/javascript">line(dimensao_array, metrica_array, nome_dimensao);</script>
+        <?php echo isset($operacao)? '<script type="text/javascript">line(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
           <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 1,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
             <img src="./img/favorito.png"></img>
           </div>
-          <div class="download">
+          <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(1,\''.$_SESSION['usuario'].'\')"': ''?>>
             <img src="./img/download.png"></img>
           </div>
         </div>
       </div>
       <div>
         <canvas id="myChartBarra"></canvas>
-        <script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>
+        <?php echo isset($operacao)? '<script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
             <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 2,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download">
+            <div class="download"  <?php echo isset($operacao)? 'onclick="downloadImage(2,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
       </div>
       <div>
         <canvas id="myChartRadar"></canvas>
-        <script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>
+        <?php echo isset($operacao)? '<script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
             <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 3,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download">
+            <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(3,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
       </div>
       <div>
         <canvas id="myChartPie"></canvas>
-        <script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>
+        <?php echo isset($operacao)? '<script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
             <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 4,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download">
+            <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(4,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
       </div>
       <div>
         <canvas id="myChartPolarArea"></canvas>
-        <script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>
+        <?php echo isset($operacao)? '<script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
             <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 5,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download">
+            <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(5,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
       </div>
       <div>
         <canvas id="myChartLine2"></canvas>
-        <script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>
+        <?php echo isset($operacao)? '<script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
             <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 6,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download">
+            <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(6,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>

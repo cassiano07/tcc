@@ -21,7 +21,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
   <meta charset="utf-8">
   <link rel="stylesheet" type="text/css" href="./css/dashbord.css">
   <link rel="stylesheet" type="text/css" href="./css/menu.css">
-  <link rel="stylesheet" type="text/css" href="./css/graficos_favoritos.css">
+  <link rel="stylesheet" type="text/css" href="./css/graficos.css">
   <link rel="stylesheet" type="text/css" href="./css/style_dashbord.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -92,6 +92,14 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
             <div>
               <canvas id="myChartLine"></canvas>
               <script type="text/javascript"> line(dimensao_array, metrica_array, nome_dimensao);</script>
+              <div class="legenda">
+                <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
+                  <img src="./img/favorito.png"></img>
+                </div>
+                <div class="download" onclick="downloadImage(1,\''.$_SESSION['usuario'].'\')">
+                  <img src="./img/download.png"></img>
+                </div>
+              </div>
             </div>
           ';
           break;
@@ -101,6 +109,14 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
             <div>
               <canvas id="myChartBarra"></canvas>
               <script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>
+              <div class="legenda">
+                <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
+                  <img src="./img/favorito.png"></img>
+                </div>
+                <div class="download" onclick="downloadImage(2,\''.$_SESSION['usuario'].'\')">
+                  <img src="./img/download.png"></img>
+                </div>
+              </div>
             </div>
           ';
           break;
@@ -110,6 +126,14 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
             <div>
               <canvas id="myChartRadar"></canvas>
               <script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>
+              <div class="legenda">
+                <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
+                  <img src="./img/favorito.png"></img>
+                </div>
+                <div class="download" onclick="downloadImage(3,\''.$_SESSION['usuario'].'\')">
+                  <img src="./img/download.png"></img>
+                </div>
+              </div>
             </div>
           ';
           break;
@@ -119,6 +143,14 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
             <div>
               <canvas id="myChartPie"></canvas>
               <script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>
+              <div class="legenda">
+                <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
+                  <img src="./img/favorito.png"></img>
+                </div>
+                <div class="download" onclick="downloadImage(4,\''.$_SESSION['usuario'].'\')">
+                  <img src="./img/download.png"></img>
+                </div>
+              </div>
             </div>
           ';
           break;
@@ -128,6 +160,14 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
             <div>
               <canvas id="myChartPolarArea"></canvas>
               <script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>
+              <div class="legenda">
+                <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
+                  <img src="./img/favorito.png"></img>
+                </div>
+                <div class="download" onclick="downloadImage(5,\''.$_SESSION['usuario'].'\')">
+                  <img src="./img/download.png"></img>
+                </div>
+              </div>
             </div>
           ';
           break;
@@ -137,6 +177,14 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
             <div>
               <canvas id="myChartLine2"></canvas>
               <script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>
+              <div class="legenda">
+                <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
+                  <img src="./img/favorito.png"></img>
+                </div>
+                <div class="download" onclick="downloadImage(6,\''.$_SESSION['usuario'].'\')">
+                  <img src="./img/download.png"></img>
+                </div>
+              </div>
             </div>
           ';
           break;
