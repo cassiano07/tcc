@@ -43,6 +43,10 @@ function line(dimensoes, metricas, nome_dimensao = null, download = null)
 	chart.data.datasets[0].label.push(label);
 	}
 
+	chart.update({
+		duration: 0
+	 });
+
 	if(download == 'download')
 	{
 		chart.update({
@@ -108,6 +112,10 @@ function bar(dimensoes, metricas, nome_dimensao = null, download = null)
 	myChartBar.data.datasets[0].label.push(label);
 	}
 
+	myChartBar.update({
+		duration: 0
+	 });
+
 	if(download == 'download')
 	{
 		myChartBar.update({
@@ -168,6 +176,10 @@ function radar(dimensoes, metricas, nome_dimensao = null, download = null)
 	label= label.concat(nome_metrica);
 	myChartRadar.data.datasets[0].label.push(label);
 	}
+
+	myChartRadar.update({
+		duration: 0
+	 });
 
 	if(download == 'download')
 	{
@@ -232,6 +244,10 @@ function pie(dimensoes, metricas, nome_dimensao = null, download = null)
 	myChartPie.data.datasets[0].label.push(label);
 	}
 
+	myChartPie.update({
+		duration: 0
+	 });
+
 	if(download == 'download')
 	{
 		myChartPie.update({
@@ -295,6 +311,10 @@ function polarArea(dimensoes, metricas, nome_dimensao = null, download = null)
 	myChartPolarArea.data.datasets[0].label.push(label);
 	}
 
+	myChartPolarArea.update({
+		duration: 0
+	 });
+
 	if(download == 'download')
 	{
 		myChartPolarArea.update({
@@ -351,6 +371,10 @@ function lineSimple(dimensoes, metricas, nome_dimensao = null, download = null)
 	myChartLine2.data.datasets[0].label.push(label);
 	}
 
+	myChartLine2.update({
+		duration: 0
+	 });
+
 	if(download == 'download')
 	{
 		myChartLine2.update({
@@ -367,7 +391,7 @@ function lineSimple(dimensoes, metricas, nome_dimensao = null, download = null)
 	}
 }
 
-function SalvarFavorito(grafico_id, conteudo_id, dimensao, metrica, operacao, usuario, usuario_id)
+function SalvarFavorito(grafico_id, conteudo_id, dimensao, metrica, operacao, usuario, usuario_id, div_id = null)
 {
 	if(usuario == 'anonimo')
 	{
@@ -380,6 +404,7 @@ function SalvarFavorito(grafico_id, conteudo_id, dimensao, metrica, operacao, us
 		xmlhttp.open("GET", url, true);
 		xmlhttp.send();
 		alert('Salvo na tela de favoritos');
+		document.getElementById(div_id).style.backgroundColor = 'rgba(255,0,0,1)';
 	}
 }
 
@@ -398,6 +423,8 @@ function ApagarFavorito(grafico_id, conteudo_id, dimensao, metrica, operacao, us
 function downloadImage(type, usuario)
 {
 	var download = 'download';
+	var cor = 'd';
+	var mudar_cor = cor.concat(type);
 
 	if(usuario == 'anonimo')
 	{
@@ -409,21 +436,27 @@ function downloadImage(type, usuario)
 	{
 		case 1:
 			line(dimensao_array, metrica_array, nome_dimensao, download);
+			document.getElementById(mudar_cor).style.backgroundColor = 'rgba(255,0,0,1)';
 			break;
 		case 2:
 			bar(dimensao_array, metrica_array, nome_dimensao, download);
+			document.getElementById(mudar_cor).style.backgroundColor = 'rgba(255,0,0,1)';
 			break;
 		case 3:
 			radar(dimensao_array, metrica_array, nome_dimensao, download);
+			document.getElementById(mudar_cor).style.backgroundColor = 'rgba(255,0,0,1)';
 			break;
 		case 4:
 			pie(dimensao_array, metrica_array, nome_dimensao, download);
+			document.getElementById(mudar_cor).style.backgroundColor = 'rgba(255,0,0,1)';
 			break;
 		case 5:
 			polarArea(dimensao_array, metrica_array, nome_dimensao, download);
+			document.getElementById(mudar_cor).style.backgroundColor = 'rgba(255,0,0,1)';
 			break;
 		case 6:
 			lineSimple(dimensao_array, metrica_array, nome_dimensao, download);
+			document.getElementById(mudar_cor).style.backgroundColor = 'rgba(255,0,0,1)';
 			break;
 	}
 	

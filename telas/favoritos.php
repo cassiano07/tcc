@@ -72,6 +72,9 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
     $dimensao_values = dados($dado[0], $dado[1], $dado[2], $dado[3], 'dimensao');
     $metrica_values = dados($dado[0], $dado[1], $dado[2], $dado[3], 'metrica');
 
+    $dimensao_values  = str_replace("\t", ' ', $dimensao_values);
+    $dimensao_values  = str_replace("'", '',$dimensao_values);
+
     $create_variable = "<script> 
     var dimensao = '".json_encode($dimensao_values)."';
     var metrica = '".json_encode($metrica_values)."';
@@ -96,7 +99,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
                 <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
                   <img src="./img/favorito.png"></img>
                 </div>
-                <div class="download" onclick="downloadImage(1,\''.$_SESSION['usuario'].'\')">
+                <div class="download" id="d1" onclick="downloadImage(1,\''.$_SESSION['usuario'].'\')">
                   <img src="./img/download.png"></img>
                 </div>
               </div>
@@ -113,7 +116,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
                 <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
                   <img src="./img/favorito.png"></img>
                 </div>
-                <div class="download" onclick="downloadImage(2,\''.$_SESSION['usuario'].'\')">
+                <div class="download" id="d2" onclick="downloadImage(2,\''.$_SESSION['usuario'].'\')">
                   <img src="./img/download.png"></img>
                 </div>
               </div>
@@ -130,7 +133,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
                 <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
                   <img src="./img/favorito.png"></img>
                 </div>
-                <div class="download" onclick="downloadImage(3,\''.$_SESSION['usuario'].'\')">
+                <div class="download" id="d3" onclick="downloadImage(3,\''.$_SESSION['usuario'].'\')">
                   <img src="./img/download.png"></img>
                 </div>
               </div>
@@ -147,7 +150,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
                 <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
                   <img src="./img/favorito.png"></img>
                 </div>
-                <div class="download" onclick="downloadImage(4,\''.$_SESSION['usuario'].'\')">
+                <div class="download" id="d4" onclick="downloadImage(4,\''.$_SESSION['usuario'].'\')">
                   <img src="./img/download.png"></img>
                 </div>
               </div>
@@ -164,7 +167,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
                 <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
                   <img src="./img/favorito.png"></img>
                 </div>
-                <div class="download" onclick="downloadImage(5,\''.$_SESSION['usuario'].'\')">
+                <div class="download" id="d5" onclick="downloadImage(5,\''.$_SESSION['usuario'].'\')">
                   <img src="./img/download.png"></img>
                 </div>
               </div>
@@ -181,7 +184,7 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
                 <div class="favorito" onclick="ApagarFavorito('.$dado[4].','.$dado[5].', \''.$dado[1].'\', \''.$dado[2].'\', \''.$dado[3].'\', '.$_SESSION['usuario_id'].')">
                   <img src="./img/favorito.png"></img>
                 </div>
-                <div class="download" onclick="downloadImage(6,\''.$_SESSION['usuario'].'\')">
+                <div class="download" id="d6" onclick="downloadImage(6,\''.$_SESSION['usuario'].'\')">
                   <img src="./img/download.png"></img>
                 </div>
               </div>

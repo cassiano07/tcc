@@ -108,9 +108,9 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
               <?php
               if(isset($dimensoes))
               {
-                foreach ($dimensoes as $dimensao)
+                foreach ($dimensoes as $dimensao_list)
                 {
-                  echo '<option value="'.$dimensao.'">'.$dimensao.'</option>';
+                  echo '<option value="'.$dimensao_list.'">'.$dimensao_list.'</option>';
                 }
               }
               ?>
@@ -119,9 +119,9 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
               <?php
               if(isset($metricas))
               {
-                foreach ($metricas as $metrica)
+                foreach ($metricas as $metrica_list)
                 {
-                  echo '<option value="'.$metrica.'">'.$metrica.'</option>';
+                  echo '<option value="'.$metrica_list.'">'.$metrica_list.'</option>';
                 }
               }
               ?>
@@ -145,10 +145,10 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartLine"></canvas>
         <?php echo isset($operacao)? '<script type="text/javascript">line(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
-          <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 1,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+          <div class="favorito" id="1" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 1,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].','.'1'.')"':'';?>>
             <img src="./img/favorito.png"></img>
           </div>
-          <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(1,\''.$_SESSION['usuario'].'\')"': ''?>>
+          <div class="download" id="d1" <?php echo isset($operacao)? 'onclick="downloadImage(1,\''.$_SESSION['usuario'].'\')"': ''?>>
             <img src="./img/download.png"></img>
           </div>
         </div>
@@ -157,10 +157,10 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartBarra"></canvas>
         <?php echo isset($operacao)? '<script type="text/javascript"> bar(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 2,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" id="2" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 2,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].','.'2'.')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download"  <?php echo isset($operacao)? 'onclick="downloadImage(2,\''.$_SESSION['usuario'].'\')"': ''?>>
+            <div class="download"  id="d2" <?php echo isset($operacao)? 'onclick="downloadImage(2,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
@@ -169,10 +169,10 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartRadar"></canvas>
         <?php echo isset($operacao)? '<script type="text/javascript"> radar(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 3,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" id="3" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 3,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].','.'3'.')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(3,\''.$_SESSION['usuario'].'\')"': ''?>>
+            <div class="download" id="d3" <?php echo isset($operacao)? 'onclick="downloadImage(3,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
@@ -181,10 +181,10 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartPie"></canvas>
         <?php echo isset($operacao)? '<script type="text/javascript"> pie(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 4,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" id="4" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 4,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].','.'4'.')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(4,\''.$_SESSION['usuario'].'\')"': ''?>>
+            <div class="download" id="d4" <?php echo isset($operacao)? 'onclick="downloadImage(4,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
@@ -193,10 +193,10 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartPolarArea"></canvas>
         <?php echo isset($operacao)? '<script type="text/javascript"> polarArea(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 5,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" id="5" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 5,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].','.'5'.')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(5,\''.$_SESSION['usuario'].'\')"': ''?>>
+            <div class="download" id="d5" <?php echo isset($operacao)? 'onclick="downloadImage(5,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
@@ -205,10 +205,10 @@ if(isset($_SESSION['usuario']) AND isset($_SESSION['conteudo']))
         <canvas id="myChartLine2"></canvas>
         <?php echo isset($operacao)? '<script type="text/javascript"> lineSimple(dimensao_array, metrica_array, nome_dimensao);</script>' : ''?>
         <div class="legenda">
-            <div class="favorito" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 6,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].')"':'';?>>
+            <div class="favorito" id="6" <?php echo isset($operacao)? 'onclick="SalvarFavorito( 6,'.$conteudo_id.', \''.$dimensao.'\', \''.$metrica.'\', \''.$operacao.'\', \''.$_SESSION['usuario'].'\', '.$_SESSION['usuario_id'].','.'6'.')"':'';?>>
               <img src="./img/favorito.png"></img>
             </div>
-            <div class="download" <?php echo isset($operacao)? 'onclick="downloadImage(6,\''.$_SESSION['usuario'].'\')"': ''?>>
+            <div class="download" id="d6" <?php echo isset($operacao)? 'onclick="downloadImage(6,\''.$_SESSION['usuario'].'\')"': ''?>>
               <img src="./img/download.png"></img>
             </div>
         </div>
