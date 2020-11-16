@@ -1,0 +1,42 @@
+*{
+	padding: 0;
+	margin: 0;
+	text-decoration: none;
+	list-style:none;
+	box-sizing: border-box;
+}
+
+body
+{
+	background-color: #c0c0c0;
+}
+
+#corpo
+{
+	background-color: #c0c0c0;
+	display: grid;
+	place-items: center;
+}
+
+#conteudo
+{
+	width: 50%;
+	margin: 20px;
+}
+
+p
+{
+	text-align: justify;
+	font-family: Courier New;
+	color: black;
+	font-size: clamp(1em, 1em + 1vw, 1em);
+	padding: 10px;
+}
+
+H1
+{
+	text-align: center;
+	font-family: Courier New;
+	color: black;
+	padding: 20px;
+}

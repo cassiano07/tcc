@@ -24,8 +24,7 @@
       <label class="logo"><img src="./img/logo.png"  width="100" height="80"></label>
       <ul>
         <li><a href="../index.html">HOME</a></li>
-        <li><a href="#">SOBRE NÓS</a></li>
-        <li><a href="#">ANALISE</a></li>
+        <li><a href="./sobre_nos.html">SOBRE NÓS</a></li>
         <li><a class="active" href="#">LOGIN</a></li>
       </ul>
     </nav>
