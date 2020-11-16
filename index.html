@@ -73,7 +73,7 @@
     <!-- ZONA DE ENVIO DE ARQUIVO-->
 
     <div class="texto" id="extraction">
-        <p>CRIAR FORMULARIO PARA ENVIAR ARQUIVO</p>
+      <p>Nesse campo o usuário fara o envio de seu arquivo para que seja feita a análise de seus dados para confirmarmos se esses dados estão aptos para serem processados.</p>
 
         <div id="formulario">
           <form action="./telas/php/arquivo.php"  enctype="multipart/form-data" method="post" class="arquivo">
@@ -81,30 +81,29 @@
             <input type="submit" id="campo" class="submit" value="Carregar" >   
           </form>
         </div>
-            <p>Nesse campo o usuário fara o envio de seu arquivo para que seja feita a análise de seus dados para confirmarmos se esses dados estão aptos para serem processados.
-            OBS.: Esses arquivos devem ser separados por vírgulas, porém, em cada informação dos dados não podem conter vírgulas.
-            Segue o exemplo abaixo, como cor AZUL o que PODE conter vírgula e cor VERMELHA o que NÃO PODE conter vírgula.
-            Ex.: 
-            </p>
-            <img align="center" src="./telas/img/exemplo.jpg">
-    </div>
-    <hr color="black">
-    <!-- ZONA DE PROCESSAMENTO-->
-    <div class="processa" id="load">
-      <div id="processa_centro">
-        <div id="processa_texto">
-          <p>Nessa etapa (se os dados estiverem aptos) faremos a separação de todas as colunas e as classificaremos por números e textos, nas quais o usuário deverá escolher uma forma de texto e outra de número e qual forma deverá ser feito. Exemplo: Soma, multiplicação, contagem ou nenhum.
-          </p>
-          <p>
-            Se tudo ocorreu como deveria, o sistema encaminhara o usuário para uma próxima página onde o usuário encontrara o seu arquivo em forma de dashboard (painel de gráficos), podendo fazer download para o seu aparelho ou criar uma conta e deixar salvo em nosso site.
-          </p>
+        <div id="conteudo">
+            <p>As informações contidas nesses arquivos devem ser separadas por vírgulas, porém, no meio dessas informações não podem conter vírgulas. O exemplo abaixo mostra a forma correta de como as informações devem estar dentro do seu arquivo, o primeiro exemplo mostra a forma correta onde as virgulas devem ficar, que no caso é delimitando as informações de cada coluna e no segundo exemplo a cor VERMELHA sinaliza onde NÃO PODE conter vírgulas, pois o nosso sistema entendera que você quer dividir aquela informação em duas colunas.</p>
+            <img src="./telas/img/dados.png">
         </div>
+    </div>
+    <hr color="rgba(255,255,255,0.5)">
+    <!-- ZONA DE PROCESSAMENTO-->
+    
+    <div id="processa_centro">
+      <div id="processa_texto">
+        <p>Nessa etapa (se os dados estiverem aptos) faremos a separação de todas as colunas e as classificaremos por números e textos, nas quais o usuário deverá escolher uma forma de texto e outra de número e qual forma deverá ser feito. Exemplo: Soma, multiplicação, contagem ou nenhum.
+          Se tudo ocorreu como deveria, o sistema encaminhara o usuário para uma próxima página onde o usuário encontrara o seu arquivo em forma de dashboard (painel de gráficos), podendo fazer download para o seu aparelho ou criar uma conta e deixar salvo em nosso site.
+        </p>
       </div>
     </div>
+    
+    <div class="processa" id="load">
+    </div>
+    <hr color="rgba(255,255,255,0.5)">
 
     <!-- BODY - GRAFICOS -->
       <div class="fundo_grafico" id="visualization">
-        <h1 align="center">Abaixo o usuário poderá ver os exemplos de gráficos que serão apresentados após todo o processo de análise.</h1>
+        <p>Abaixo o usuário poderá ver os gráficos que estarão disponivel em nossa plataforma e serão apresentados após todo o processo de análise.</p>
       	<section class="flex">
       		<div class="color">
       			<canvas id="myChartLine"></canvas>
@@ -116,7 +115,5 @@
       		</div>
       	</section>
       </div>
-
-
   </body>
 </html>

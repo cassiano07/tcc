@@ -2,7 +2,7 @@
 
 .banner {
 	width: 100%;
-	height: 250px;
+	height: 150px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -12,8 +12,8 @@
 }
 
 .banner a{
-	width: 200px;
-	height: 200px;
+	width: 100px;
+	height: 100px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -22,8 +22,8 @@
 }
 
 .caixa2 {
-	width: 200px;
-	height: 200px;
+	width: 100px;
+	height: 100px;
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -85,21 +85,52 @@
 	.banner {
 		height: 150px;
 	}
+
+	#conteudo img
+	{
+		width: 80%;
+	}
 }
 
 /* DESCRIÇÃO DO SITE*/
 
 .texto{
 	width: 100%;
-	height: 700px;
+	height: auto;
 	background-color: #0d242a;
 
 }
 
-.texto p {
+#conteudo
+{
+	width: 100%;
+    height: 250;
+	display: grid;
+	place-items: center;
+}
+
+p {
 	text-align: center;
-	font-family: montserrat;
+	font-family: Courier New;
 	color: white;
+	font-size: clamp(1em, 1em + 1vw, 1em);
+	padding: 20px;
+}
+
+p {
+	text-align: center;
+	font-family: Courier New;
+	color: white;
+	font-size: clamp(1em, 1em + 1vw, 1em);
+	padding: 20px;
+}
+
+#conteudo img
+{
+	margin-top: 20px;
+	border-radius: 2%;
+	border:  1px solid seashell;
+	margin-bottom: 20px;
 }
 
 
@@ -110,7 +141,6 @@
 {
 	width: 100%;
 	height: 400px;
-	background-color: white;
 	background-image: url('../img/processa.gif');
 	background-repeat: no-repeat;
   	background-size: 100% 100%;
@@ -123,17 +153,9 @@
 
 #processa_centro
 {
-	margin: 0 auto;
 	width: 100%;
-	height: 100%;
-	background-color: rgba(0,0,0,0.7);
-}
-
-#processa_texto p{
-	text-align: center;
-	font-family: montserrat;
-	color: white;
-	margin-top: 20px;
+	height: auto;
+	background-color: #0d242a;
 }
 
 
