@@ -1,4 +1,10 @@
+<?php 
+include ('./php/lista_usuarios.php');
 
+$valores = usuarios();
+
+
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
@@ -72,48 +78,19 @@
                 </thead>
                 
                 <?php 
-                $valores = [
-                    0 => array(
-                        'codigo' => '1',
-                        'Nome' => 'Daniel Cassiano',
-                        'email' => 'daniel@ubok',
-                        'senha' => '132',
-                        'telefone' => '2629',
-                        'permissao' => '1',
-                        'criacao' => '2019'
-                        ),
-                    1 => array(
-                        'codigo' => '2',
-                        'Nome' => 'baixo grafico',
-                        'email' => 'Daniel@sds',
-                        'senha' => '546',
-                        'telefone' => '2629',
-                        'permissao' => '2',
-                        'criacao' => '2018'
-                        ),
-                    2 => array(
-                        'codigo' => '3',
-                        'Nome' => 'Daniel Cassiano',
-                        'email' => 'lucas@sdad',
-                        'senha' => '465',
-                        'telefone' => '2629',
-                        'permissao' => '1',
-                        'criacao' => '2020'
-                        )
-                ];
                 echo '<tbody>';
                 foreach($valores as $valor)
                 {
                     echo "<tr>
 							<th scope=\"row\"></th>
-							<th scope=\"row\">".$valor['codigo']."</th>
-							<td>".$valor['Nome']."</td>
-							<td>".$valor['email']."</td>
-							<td>".$valor['senha']."</td>
-							<td>".$valor['telefone']."</td>
-							<td>".$valor['permissao']."</td>
-							<td>".$valor['criacao']."</td>
-							<td><i onclick=\"Usuario(".$valor['codigo'].")\" id=\"controle\" class=\"fa fa-pencil\" aria-hidden=\"true\"></i> <i onclick=\"ApagarUsuario(".$valor['codigo'].")\" class=\"fa fa-user-times\" aria-hidden=\"true\"></i></td>
+							<th scope=\"row\">".$valor[0]."</th>
+							<td>".$valor[1]."</td>
+							<td>".$valor[2]."</td>
+							<td>".$valor[4]."</td>
+							<td>".$valor[3]."</td>
+							<td>".$valor[5]."</td>
+							<td>".$valor[6]."</td>
+							<td><i onclick=\"Usuario(".$valor[0].")\" id=\"controle\" class=\"fa fa-pencil\" aria-hidden=\"true\"></i> <i onclick=\"ApagarUsuario(".$valor[0].")\" class=\"fa fa-user-times\" aria-hidden=\"true\"></i></td>
 						</tr>";
                 }
                 echo '</tbody>';
