@@ -35,30 +35,10 @@ include('./php/verificar_login.php');
 	<!-- Conteudo-->
 
 <?php
+include ('./php/historico.php');
+$usuarioid = $_SESSION['usuario_id'];
+$valores = hist($usuarioid);
 
-	$valores = [
-		0 => array(
-			'id' => '1',
-			'evento' => 'salvo grafico',
-			'grafico' => 'Linha',
-			'dado' => 'nome do conteudo',
-			'data' => '2020'
-			),
-		1 => array(
-			'id' => '2',
-			'evento' => 'baixo grafico',
-			'grafico' => 'bolinha',
-			'dado' => 'nome do conteudo',
-			'data' => '2019'
-			),
-		2 => array(
-			'id' => '3',
-			'evento' => 'salvo grafico',
-			'grafico' => 'pizza',
-			'dado' => 'nome do conteudo',
-			'data' => '2018'
-			),
-	];
 
 ?>
 
@@ -85,11 +65,11 @@ include('./php/verificar_login.php');
 					{
 						
 						echo "<tr>
-							<th scope=\"row\">".$count."</th>
-							<td>".$valor['evento']."</td>
-							<td>".$valor['grafico']."</td>
-							<td>".$valor['dado']."</td>
-							<td>".$valor['data']."</td>
+							<th scope=\"row\">".$valor[0]."</th>
+							<td>".$valor[3]."</td>
+							<td>".$valor[1]."</td>
+							<td>".$valor[2]."</td>
+							<td>".$valor[4]."</td>
 						</tr>";
 						$count++;
 					}

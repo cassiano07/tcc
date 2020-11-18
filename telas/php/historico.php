@@ -1,34 +1,17 @@
 <?php
-
-$valores = [
-	0 => array(
-		'id' => '1',
-		'evento' => 'salvo grafico',
-		'grafico' => 'Linha',
-		'Dado' => 'nome do conteudo',
-		'data' => '2020'
-		),
-	1 => array(
-		'id' => '2',
-		'evento' => 'baixo grafico',
-		'grafico' => 'bolinha',
-		'Dado' => 'nome do conteudo',
-		'data' => '2020'
-		),
-	2 => array(
-		'id' => '3',
-		'evento' => 'salvo grafico',
-		'grafico' => 'pizza',
-		'Dado' => 'nome do conteudo',
-		'data' => '2020'
-		)
-];
+include ('conexao.php');
 
 
-
-foreach ($valores as $alter)
+function hist($usuarioid)
 {
-	echo $alter['id'];
-}
-
+	$connect = connect();
+    $query = "select H.id,G.nome,CA.titulo,H.evento,H.data_criacao from historico H 
+left join conteudo_arquivo CA on CA.id = H.conteudo_id
+left join grafico G on H.grafico_id = G.id
+where H.usuario_id = ".$usuarioid;
+	$result = mysqli_query($connect, $query);
+	$linhas = $result -> fetch_all();
+	return $linhas;
+}	
 ?>
+
