@@ -15,7 +15,15 @@ $rows = mysqli_num_rows($result);
 $rows2 = mysqli_fetch_array($result);
 
 
-if($rows == 1) {
+if($rows == 1)
+{	
+	if($rows2['categoria_id'] == 1)
+	{
+		$_SESSION['usuario'] = $email;
+		$_SESSION['usuario_id'] = $rows2['id'];
+		header('Location: ../admin.php');
+		exit();
+	}
 	$_SESSION['usuario'] = $email;
 	$_SESSION['usuario_id'] = $rows2['id'];
 	header('Location: ../dashbord.php');
