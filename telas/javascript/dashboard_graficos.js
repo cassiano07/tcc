@@ -78,15 +78,7 @@ function bar(dimensoes, metricas, nome_dimensao = null, download = null)
 		        datasets: 
 		        [{
 		            label: [],
-		            backgroundColor: [
-		                'rgba(255, 99, 132, 1)', // O número de cores dever ter o mesmo número de dados
-		                'rgba(54, 162, 235, 1)',
-		                'rgba(255, 206, 86, 1)',
-		                'rgba(75, 192, 192, 1)',
-		                'rgba(153, 102, 255, 1)',
-		                'rgba(255, 159, 64, 1)',
-		                'rgba(178,34,34, 1)',
-		            ],
+		            backgroundColor: [],
 		            data: []
 		        }]
 		    },
@@ -95,12 +87,20 @@ function bar(dimensoes, metricas, nome_dimensao = null, download = null)
 		    options: {}
 	});
 
-
 	for(var i = 0; i < dimensoes.length; i++)
 	{
-	myChartBar.data.labels.push(dimensoes[i].substr(0,10));
+		//gerador de cores
+		var r = Math.floor(Math.random() * 256);
+		var g = Math.floor(Math.random() * 256);
+		var b = Math.floor(Math.random() * 256);
+		var a = 1;
+		var cor = 'rgba(' + r +','+ g +','+ b +','+ a + ')';
 
-	myChartBar.data.datasets[0].data.push(metricas[i]);
+		// inserindo dados no grafico
+		myChartBar.data.datasets[0].backgroundColor.push(cor);
+		myChartBar.data.labels.push(dimensoes[i].substr(0,10));
+		myChartBar.data.datasets[0].data.push(metricas[i]);
+		
 	}
 
 	var label;
@@ -210,15 +210,7 @@ function pie(dimensoes, metricas, nome_dimensao = null, download = null)
 		        datasets: 
 		        [{
 		            label: [],
-		            backgroundColor: [
-		                'rgba(255, 99, 132, 1)',
-		                'rgba(54, 162, 235, 1)',
-		                'rgba(255, 206, 86, 1)',
-		                'rgba(75, 192, 192, 1)',
-		                'rgba(153, 102, 255, 1)',
-		                'rgba(255, 159, 64, 1)',
-		                'rgba(178,34,34, 1)',
-		            ],
+		            backgroundColor: [],
 		            data: []
 		        }]
 		    },
@@ -230,9 +222,17 @@ function pie(dimensoes, metricas, nome_dimensao = null, download = null)
 
 	for(var i = 0; i < dimensoes.length; i++)
 	{
-	myChartPie.data.labels.push(dimensoes[i].substr(0,10));
+		//gerador de cores
+		var r = Math.floor(Math.random() * 256);
+		var g = Math.floor(Math.random() * 256);
+		var b = Math.floor(Math.random() * 256);
+		var a = 1;
+		var cor = 'rgba(' + r +','+ g +','+ b +','+ a + ')';
 
-	myChartPie.data.datasets[0].data.push(metricas[i]);
+		// inserindo dados no grafico
+		myChartPie.data.datasets[0].backgroundColor.push(cor);
+		myChartPie.data.labels.push(dimensoes[i].substr(0,10));
+		myChartPie.data.datasets[0].data.push(metricas[i]);
 	}
 
 	var label;
@@ -277,15 +277,7 @@ function polarArea(dimensoes, metricas, nome_dimensao = null, download = null)
 		        datasets: 
 		        [{
 		            label: [],
-		            backgroundColor: [
-		                'rgba(255, 99, 132, 1)',
-		                'rgba(54, 162, 235, 1)',
-		                'rgba(255, 206, 86, 1)',
-		                'rgba(75, 192, 192, 1)',
-		                'rgba(153, 102, 255, 1)',
-		                'rgba(255, 159, 64, 1)',
-		                'rgba(178,34,34, 1)',
-		            ],
+		            backgroundColor: [],
 		            data: []
 		        }]
 		    },
@@ -297,9 +289,17 @@ function polarArea(dimensoes, metricas, nome_dimensao = null, download = null)
 
 	for(var i = 0; i < dimensoes.length; i++)
 	{
-	myChartPolarArea.data.labels.push(dimensoes[i].substr(0,10));
+		//gerador de cores
+		var r = Math.floor(Math.random() * 256);
+		var g = Math.floor(Math.random() * 256);
+		var b = Math.floor(Math.random() * 256);
+		var a = 1;
+		var cor = 'rgba(' + r +','+ g +','+ b +','+ a + ')';
 
-	myChartPolarArea.data.datasets[0].data.push(metricas[i]);
+		// inserindo dados no grafico
+		myChartPolarArea.data.datasets[0].backgroundColor.push(cor);
+		myChartPolarArea.data.labels.push(dimensoes[i].substr(0,10));
+		myChartPolarArea.data.datasets[0].data.push(metricas[i]);
 	}
 
 	var label;
