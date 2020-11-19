@@ -1,7 +1,5 @@
 CREATE DATABASE EA;
 
-CREATE DATABASE EA;
-
 use ea;
 
 CREATE TABLE usuarios(
