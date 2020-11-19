@@ -65,7 +65,7 @@ CREATE TABLE categoria_usuario(
 INSERT INTO categoria_usuario(nome_categoria) VALUES ('Administradores');
 INSERT INTO categoria_usuario(nome_categoria) VALUES ('Usuarios');
 INSERT INTO grafico (id, nome, tipo) VALUES (1, 'Gráfico de linha', 'line'), (2, 'Gráfico de barra', 'bar'), (3, 'Gráfico de Radar', 'radar'), (4, 'Gráfico de Torta', 'pie'), (5, 'Gráfico Aréa Polar', 'polararea'), (6, 'Gráfico de Linha Simples', 'linesimple');
-
+INSERT INTO usuarios (nome_completo, email, telefone, senha, categoria_id) VALUES ('admin', 'admin@admin', 993877528, '123',  1), ('Daniel Cassiano Martins', 'danielcmartins07@gmail.com', 993877528, '123',  2), ('Rodrigo Alexandre Pereira', 'rodrigo@gmail.com', 65497498, '123',  2), ('Bruno Barbosa Barros Dirk', 'bruno@gmail.com', 654974988, '123',  2);
 
 ALTER TABLE favorito
 ADD CONSTRAINT fk_ID_usuario
