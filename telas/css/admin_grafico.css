@@ -1,0 +1,163 @@
+body
+{
+    margin: 0;
+    padding: 0;
+}
+
+.group
+{
+    width: 100vw;
+    height: 100vh;
+    background-color: lightcoral;
+}
+
+#painel
+{
+    position: relative;
+    float: left;
+    width: 15%;
+    height: 100%;
+    background-color:  #c0c0c0;
+    border-right: 1px solid #5f5f5f;
+}
+
+#logo
+{
+    width: 100%;
+    height: 30%;
+    border-bottom: 1px solid  #5f5f5f;
+}
+
+#logo img
+{
+    width: 100%;
+    height: 100%;
+}
+
+#painel ul
+{
+    list-style:none;
+    margin: 0;
+    padding: 0;
+}
+
+#painel ul li
+{
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 1px solid #5f5f5f;
+}
+
+#painel ul li a
+{
+    font-family: 'Courier New', Courier, monospace;
+    color:  black;
+    text-decoration: none;
+    display: block;
+}
+
+#painel ul li span
+{
+    margin-right: 10px;
+}
+
+#painel ul li:hover
+{
+    background-color: #9e9e9e;
+}
+
+#menu
+{
+    position: relative;
+    float: left;
+    width: 85%;
+    height: 8%;
+    background-color:#c0c0c0;
+}
+
+#menu p
+{
+    font-family: 'Courier New', Courier, monospace;
+    color:  black;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+}
+
+#corpo
+{
+    position: relative;
+    float: left;
+    width: 85%;
+    height: 92%;
+    background-color:white;
+}
+
+#corpo table i
+{
+    cursor: pointer;
+}
+
+#detalhe
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+#detalhes
+{
+    margin: 0 auto;
+    position: absolute;
+    width: 200px;
+    height: 280px;
+    background-color: #c0c0c0;
+    z-index: 9999;
+    display: none;
+    -webkit-box-shadow: 9px 7px 5px rgba(50, 50, 50, 0.77);
+	-moz-box-shadow:    9px 7px 5px rgba(50, 50, 50, 0.77);
+    box-shadow:         9px 7px 5px rgba(50, 50, 50, 0.77);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#detalhes form
+{
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#detalhes input
+{
+    width: 95%;
+    margin-top: -20px;
+}
+
+#detalhes button
+{
+    width: 95%;
+    text-align: center;
+    padding: 2px 3px;
+    border: 1px solid black;
+    border-radius: 6px;
+    background-color: #FCC302;
+    font-size: 18px;
+    font-family: 'Courier New', Courier, monospace;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+#detalhes button:hover
+{
+    background-color: #f5df98;  
+}
+
+#controle
+{
+    margin-right: 10px;
+}
