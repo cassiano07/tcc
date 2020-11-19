@@ -13,8 +13,15 @@ $tipo = ( isset($_GET['tipo']) ) ? $_GET['tipo'] : null;
 
 if($tipo == 'apagar')
 {
+    $select = "SELECT * FROM favorito  WHERE conteudo_id = ".$conteudo_id." AND grafico_id = ".$grafico_id." AND  usuario_id = ".$usuario_id." AND dimensao = '".$dimensao."' AND metrica = '".$metrica."' AND operacao = '".$operacao."'";
+    $execute = mysqli_query($conexao, $select);
+    $resultado = mysqli_fetch_array($execute);
+
     $query = "DELETE FROM favorito  WHERE conteudo_id = ".$conteudo_id." AND grafico_id = ".$grafico_id." AND  usuario_id = ".$usuario_id." AND dimensao = '".$dimensao."' AND metrica = '".$metrica."' AND operacao = '".$operacao."'";
-    $execute = mysqli_query($conexao, $query); 
+    $execute = mysqli_query($conexao, $query);
+
+    $sql3 = "INSERT INTO  historico (grafico_id, conteudo_id,evento, usuario_id, favorito_id) VALUES ($grafico_id, ".$conteudo_id.", 'Apagando Gráfico de favoritos', ".$usuario_id.",".$resultado['id'].")";
+    mysqli_query($conexao, $sql3);
 }
 else
 {
@@ -26,6 +33,9 @@ else
     {
         $sql = "INSERT INTO favorito (conteudo_id, grafico_id, usuario_id, dimensao, metrica, operacao) VALUES (".$conteudo_id.", ".$grafico_id.", ".$usuario_id.", '".$dimensao."', '".$metrica."', '".$operacao."')";
         $result = mysqli_query($conexao, $sql);
+
+        $sql3 = "INSERT INTO  historico (grafico_id, conteudo_id,evento, usuario_id, favorito_id) VALUES ($grafico_id, ".$conteudo_id.", 'Gráfico salvo em favoritos', ".$usuario_id.", 0)";
+	    mysqli_query($conexao, $sql3);
     }
 }
 

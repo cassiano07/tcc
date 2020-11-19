@@ -432,6 +432,15 @@ function downloadImage(type, usuario)
 		return;
 	}
 
+	if(type)
+	{
+		var xmlhttp = new XMLHttpRequest();
+		var url = "http://localhost/tcc/telas/php/historico_download.php?grafico_id=" + type + "&usuario=" + usuario; 
+		xmlhttp.open("GET", url, true);
+		xmlhttp.send();
+		location.reload();
+	}
+
 	switch(type)
 	{
 		case 1:
@@ -459,7 +468,4 @@ function downloadImage(type, usuario)
 			document.getElementById(mudar_cor).style.backgroundColor = 'rgba(255,0,0,1)';
 			break;
 	}
-	
-
-	 
  }
