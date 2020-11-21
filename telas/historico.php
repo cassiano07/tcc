@@ -65,7 +65,7 @@ $valores = hist($usuarioid);
 					{
 						
 						echo "<tr>
-							<th scope=\"row\">".$valor[0]."</th>
+							<th scope=\"row\">".$count."</th>
 							<td>".$valor[3]."</td>
 							<td>".$valor[1]."</td>
 							<td>".$valor[2]."</td>

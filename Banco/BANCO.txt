@@ -44,7 +44,6 @@ CREATE TABLE historico(
         evento varchar(100) NOT null,
         data_criacao DATETIME DEFAULT CURRENT_TIMESTAMP,
         usuario_id int(3),
-        favorito_id int(3),
         PRIMARY KEY (id)
 );
    
@@ -62,70 +61,44 @@ CREATE TABLE categoria_usuario(
         PRIMARY KEY (id)
 );
 
-INSERT INTO categoria_usuario(nome_categoria) VALUES ('Administradores');
-INSERT INTO categoria_usuario(nome_categoria) VALUES ('Usuarios');
-INSERT INTO grafico (id, nome, tipo) VALUES (1, 'Gráfico de linha', 'line'), (2, 'Gráfico de barra', 'bar'), (3, 'Gráfico de Radar', 'radar'), (4, 'Gráfico de Torta', 'pie'), (5, 'Gráfico Aréa Polar', 'polararea'), (6, 'Gráfico de Linha Simples', 'linesimple');
-INSERT INTO usuarios (nome_completo, email, telefone, senha, categoria_id) VALUES ('admin', 'admin@admin', 993877528, '123',  1), ('Daniel Cassiano Martins', 'danielcmartins07@gmail.com', 993877528, '123',  2), ('Rodrigo Alexandre Pereira', 'rodrigo@gmail.com', 65497498, '123',  2), ('Bruno Barbosa Barros Dirk', 'bruno@gmail.com', 654974988, '123',  2);
-
 ALTER TABLE favorito
 ADD CONSTRAINT fk_ID_usuario
 FOREIGN KEY (usuario_id)
-REFERENCES usuarios(id)
-ON DELETE CASCADE
-ON UPDATE CASCADE;
+REFERENCES usuarios(id);
 
 ALTER TABLE favorito 
 ADD CONSTRAINT fk_ID_grafico 
 FOREIGN KEY (grafico_id) 
-REFERENCES grafico(id) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE;
+REFERENCES grafico(id);
 
 ALTER TABLE favorito 
 ADD CONSTRAINT fk_ID_conteudo
 FOREIGN KEY (conteudo_id) 
-REFERENCES conteudo_arquivo(id) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE;
-
-ALTER TABLE conteudo_arquivo 
-ADD CONSTRAINT fk_ID_usuarios 
-FOREIGN KEY (usuario_id) 
-REFERENCES usuarios(id) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE;
+REFERENCES conteudo_arquivo(id);
 
 ALTER TABLE historico
 ADD CONSTRAINT fk_ID_usuariohistorico
 FOREIGN KEY (usuario_id)
-REFERENCES usuarios(id)
-ON DELETE CASCADE
-ON UPDATE CASCADE;
+REFERENCES usuarios(id);
 
 ALTER TABLE historico 
 ADD CONSTRAINT fk_ID_graficohistorico 
 FOREIGN KEY (grafico_id) 
-REFERENCES grafico(id) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE;
+REFERENCES grafico(id);
 
 ALTER TABLE historico 
 ADD CONSTRAINT fk_ID_conteudohistorico
 FOREIGN KEY (conteudo_id) 
-REFERENCES conteudo_arquivo(id) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE;
-
-ALTER TABLE historico 
-ADD CONSTRAINT fk_ID_favoritohistorico
-FOREIGN KEY (favorito_id) 
-REFERENCES favorito(id) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE;
+REFERENCES conteudo_arquivo(id);
 
 ALTER TABLE usuarios 
 ADD CONSTRAINT fk_ID_usuariocategoria
 FOREIGN KEY (categoria_id) 
-REFERENCES categoria_usuario(id) 
-ON DELETE CASCADE 
-ON UPDATE CASCADE;
+REFERENCES categoria_usuario(id);
+
+
+
+INSERT INTO categoria_usuario(nome_categoria) VALUES ('Administradores');
+INSERT INTO categoria_usuario(nome_categoria) VALUES ('Usuarios');
+INSERT INTO grafico (id, nome, tipo) VALUES (1, 'Gráfico de linha', 'line'), (2, 'Gráfico de barra', 'bar'), (3, 'Gráfico de Radar', 'radar'), (4, 'Gráfico de Torta', 'pie'), (5, 'Gráfico Aréa Polar', 'polararea'), (6, 'Gráfico de Linha Simples', 'linesimple');
+INSERT INTO usuarios (nome_completo, email, telefone, senha, categoria_id) VALUES ('admin', 'admin@admin', 993877528, '123',  1), ('Daniel Cassiano Martins', 'danielcmartins07@gmail.com', 993877528, '123',  2), ('Rodrigo Alexandre Pereira', 'rodrigo@gmail.com', 65497498, '123',  2), ('Bruno Barbosa Barros Dirk', 'bruno@gmail.com', 654974988, '123',  2);
